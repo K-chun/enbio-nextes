@@ -24,6 +24,12 @@
   }
 }
 
+.p-footer__logo:hover {
+  @include mq(md){
+    opacity: 0.7;
+  }
+}
+
 .p-footer__logo img {
   width: 100%;
   height: auto;

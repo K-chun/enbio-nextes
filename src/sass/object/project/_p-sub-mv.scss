@@ -1,0 +1,86 @@
+@use "global" as *;
+
+.p-sub-mv {
+
+}
+
+.p-sub-mv__bg {
+  padding-top: myrem(125);
+  padding-bottom: myrem(70);
+  background-color: transparent;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  @include mq(md){
+    padding-top: myrem(231);
+    padding-bottom: myrem(184);
+  }
+}
+
+.contact .p-sub-mv__bg {
+  background-image: url(../images/contact/mv_sp.jpg);
+  @include mq(md){
+    background-image: url(../images/contact/mv_pc.jpg);
+  }
+}
+
+.p-sub-mv__inner {
+  padding: 0 myrem(31);
+  @include mq(md){
+    max-width: myrem(1326);
+    padding: 0 myrem(25);
+  }
+}
+
+.p-sub-mv__title {
+  display: flex;
+  flex-direction: column;
+  row-gap: myrem(6);
+  @include mq(md){
+    row-gap: myrem(20);
+  }
+}
+
+.p-sub-mv__title-sub {
+  font-size: myrem(48);
+  color: $white;
+  line-height: calc(56 / 48);
+  font-weight: 400;
+  font-family: $font-figtree;
+  @include mq(md){
+    font-size: myrem(80);
+    line-height: calc(56 / 80);
+  }
+}
+
+.p-sub-mv__title-main {
+  padding-left: myrem(18);
+  font-size: myrem(16);
+  color: $white;
+  line-height: calc(23 / 16);
+  font-weight: 600;
+  position: relative;
+  @include mq(md){
+    padding-left: myrem(24);
+    font-size: myrem(20);
+    line-height: calc(29 / 20);
+  }
+}
+
+.p-sub-mv__title-main::before {
+  content: '';
+  width: myrem(8);
+  height: myrem(8);
+  background: $white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: myrem(3);
+  transform: translateY(-50%);
+  @include mq(md){
+    width: myrem(11);
+    height: myrem(11);
+    top: 55%;
+    left: myrem(3);
+  }
+}
