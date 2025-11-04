@@ -1,0 +1,31 @@
+@use "global" as *;
+
+.p-news-article {
+  padding-top: myrem(60);
+  padding-bottom: myrem(60);
+  @include mq(md){
+    padding-top: myrem(120);
+    padding-bottom: myrem(130);
+  }
+}
+
+.p-news-article__inner {
+  @include mq(md){
+    max-width: myrem(1079);
+  }
+}
+
+.p-news-article__list {
+  border-top: 1px solid $line-color-light;
+}
+
+.p-news-article__item {
+
+}
+
+.p-news-article__pagination {
+  margin-top: myrem(30);
+  @include mq(md){
+    margin-top: myrem(58);
+  }
+}

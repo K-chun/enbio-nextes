@@ -1,0 +1,65 @@
+@use "global" as *;
+
+.c-pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.c-pagination__prev,
+.c-pagination__next {
+  width: myrem(32);
+  height: myrem(32);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-pagination__prev {
+  margin-right: myrem(16);
+  background: $green-light;
+}
+
+.c-pagination__next {
+  margin-left: myrem(16);
+  background: $green;
+}
+
+.c-pagination__prev-arrow,
+.c-pagination__next-arrow {
+  display: block;
+  width: myrem(10);
+  @include mq(md){
+    width: myrem(10);
+  }
+}
+
+.c-pagination__prev-arrow img,
+.c-pagination__next-arrow img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.c-pagination__page {
+  width: myrem(24);
+  font-size: myrem(16);
+  line-height: 1;
+  font-family: $font-figtree;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include mq(md){
+    width: myrem(24);
+  }
+}
+
+span.c-pagination__page {
+  color: $green;
+}
+
+a.c-pagination__page {
+
+}

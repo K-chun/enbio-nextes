@@ -24,6 +24,13 @@
   }
 }
 
+.news .p-sub-mv__bg {
+  background-image: url(../images/news/mv_sp.jpg);
+  @include mq(md){
+    background-image: url(../images/news/mv_pc.jpg);
+  }
+}
+
 .p-sub-mv__inner {
   padding: 0 myrem(31);
   @include mq(md){
