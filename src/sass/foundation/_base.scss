@@ -41,3 +41,56 @@ button {
     }
   }
 }
+
+
+
+
+.simplebar-track {
+  width: myrem(8);
+  @include mq(md){
+    width: myrem(12);
+  }
+}
+
+.simplebar-track .simplebar-scrollbar {
+  height: myrem(48) !important;
+  border-radius: 8px;
+  overflow: hidden;
+  @include mq(md){
+    height: calc(328 / 498 * 100%) !important;
+    border-radius: 12px;
+  }
+}
+
+.simplebar-track.simplebar-vertical {
+  width: myrem(8);
+  border-radius: 8px;
+  top: 50%;
+  right: myrem(8);
+  transform: translateY(-50%);
+  @include mq(md){
+    width: myrem(12);
+    height: calc(448 / 498 * 100%);
+    border-radius: 12px;
+    right: myrem(18);
+  }
+}
+
+.simplebar-track {
+  background: transparent;
+}
+
+.simplebar-track .simplebar-scrollbar.simplebar-visible::before{
+  opacity:1;
+}
+
+.simplebar-track .simplebar-scrollbar::before{
+  width: 100%;
+  height: 100%;
+  background: #E7E7E7;
+  border-radius: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

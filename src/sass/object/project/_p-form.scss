@@ -1,0 +1,48 @@
+@use "global" as *;
+
+
+
+.p-form__privacy {
+  @include mq(md){
+    max-width: myrem(1024);
+    margin-inline: auto;
+  }
+}
+
+.p-form__privacy-wrap {
+  border: 1px solid $line-color;
+}
+
+.p-form__privacy-inner {
+  @include mq(md){
+    height: myrem(498);
+    padding: myrem(53) myrem(50);
+  }
+}
+
+.p-form__privacy-area {
+  margin-bottom: myrem(20);
+  @include mq(md){
+    margin-bottom: myrem(36);
+  }
+}
+
+.p-form__privacy-title {
+  font-size: myrem(16);
+  line-height: calc(32 / 16);
+  font-weight: 700;
+  @include mq(md){
+    font-size: myrem(18);
+    line-height: calc(36 / 18);
+  }
+}
+
+.p-form__privacy-text {
+  font-size: myrem(16);
+  line-height: calc(32 / 16);
+  @include mq(md){
+    font-size: myrem(18);
+    line-height: calc(36 / 18);
+  }
+}
+

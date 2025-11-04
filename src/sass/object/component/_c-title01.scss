@@ -1,0 +1,33 @@
+@use "global" as *;
+
+.c-title01 {
+  padding-bottom: myrem(11);
+  border-bottom: 1px solid $line-color;
+  position: relative;
+  @include mq(md){
+    padding-bottom: myrem(17);
+  }
+}
+
+.c-title01::after {
+  content: "";
+  width: calc(40 / 360 * 100%);
+  height: 1px;
+  background: $darkgreen;
+  position: absolute;
+  bottom: myrem(-1);
+  left: 0;
+  @include mq(md){
+    width: calc(80 / 1029 * 100%);
+  }
+}
+
+.c-title01__main {
+  font-size: myrem(24);
+  color: $darkgreen;
+  line-height: 1.5;
+  font-weight: 600;
+  @include mq(md){
+    font-size: myrem(32);
+  }
+}

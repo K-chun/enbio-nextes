@@ -1,0 +1,42 @@
+@use "global" as *;
+
+.p-contact {
+  padding-top: myrem(52);
+  @include mq(md){
+    padding-top: myrem(120);
+  }
+}
+
+.p-contact__inner {
+  @include mq(md){
+    max-width: myrem(1079);
+  }
+}
+
+.p-contact__title {
+
+}
+
+.p-contact__read {
+  margin-top: myrem(14);
+  font-size: myrem(18);
+  line-height: calc(40 / 18);
+  @include mq(md){
+    margin-top: myrem(32);
+    font-size: myrem(18);
+    line-height: calc(40 / 18);
+  }
+}
+
+.p-contact__wrap {
+
+}
+
+.p-contact__form {
+
+}
+
+.p-form {
+
+}
+
