@@ -1,18 +1,29 @@
 @use 'sass:math';
 
 // インナー幅
-$innerWidth: 1024px;
+$innerWidth: 1240px;
 
 // 余白
 $padding-pc: 25px;
-$padding-sp: 20px;
+$padding-sp: 15px;
 
 // フォント
-$font-main: "";
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Noto+Sans+JP:wght@100..900&family=Outfit:wght@100..900&display=swap');
+
+$font-main: "Noto Sans JP", sans-serif;
+$font-outfit: "Outfit", sans-serif;
+$font-figtree: "Figtree", sans-serif;
 
 // 色指定
-$black: #333;
+$black: #3C3C3C;
+$gray: #636363;
 $white: #fff;
+$green: #00A9AC;
+$green-light: #E5F6F7;
+$darkgreen: #005563;
+$line-color: #CACACA;
+$line-color-light: #E7E7E7;
+$yellow: #F6FFDB;
 
 // ブレイクポイント
 $breakpoints: (
