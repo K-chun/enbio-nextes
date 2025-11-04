@@ -28,6 +28,7 @@ html {
 body {
   font-family: $font-main;
   color: $black;
+  background: $green;
 }
 
 // ホバー
@@ -36,7 +37,7 @@ button {
   @include mq(md) {
     transition: .3s;
     &:hover {
-      opacity: 0.7;
+      // opacity: 0.7;
       cursor: pointer;
     }
   }

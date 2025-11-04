@@ -1,38 +1,513 @@
-
 jQuery(function ($) {
-  
-  // ページトップボタン
-  var topBtn = $('.js-pagetop');
-  topBtn.hide();
 
-  // ページトップボタンの表示設定
-  $(window).scroll(function () {
-    if ($(this).scrollTop() > 70) {
-      // 指定px以上のスクロールでボタンを表示
-      topBtn.fadeIn();
-    } else {
-      // 画面が指定pxより上ならボタンを非表示
-      topBtn.fadeOut();
+
+  // ------------------------------
+  // js-fadeHead（読み込み後フェード）
+  // ------------------------------
+  $('.js-fadeHead').each(function(){
+    var targetElement = $(this).offset().top;
+    $(this).delay(500).queue(function(){
+      $(this).css('opacity','1');
+    });
+  });
+
+  // ------------------------------
+  // js-fadein（スクロール時フェード）
+  // ------------------------------
+  $(window).on('load scroll', function () {
+    $('.js-fadein').each(function(){
+      var targetElement = $(this).offset().top;
+      var scroll = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (scroll > targetElement - windowHeight + 100){
+        $(this).css('opacity','1');
+        $(this).css('transform','translateY(0)');
+        $(this).find('.js-fadein-delay').each(function(){
+          var element = $(this);
+          setTimeout(function(){
+            element.css('opacity','1');
+            element.css('transform','translateY(0)');
+          }, 400);
+        });
+      }
+    });
+  });
+
+  // ------------------------------
+  // 初期化関数の呼び出し
+  // ------------------------------
+  $(document).ready(function () {
+    pageTop();              // ページトップボタン
+    floatBtn();             // フロートボタンの表示制御（SPのみ）
+    toggleEntryButton();    // CTA表示時にエントリーボタン非表示
+    anchorAdjustment();     // アンカーリンクのスムーススクロール調整
+    scrollToHashOnLoad();   // ページ読み込み時のハッシュスクロール
+    header();               // ハンバーガーメニュー挙動
+    Accordion();            // アコーディオンメニュー
+    sliders();              // 各Swiperスライダー初期化
+    manageNavInteraction(); // ナビのホバー＆クリック制御
+    initSwiperOnVisible();  // 遅延表示Swiperの初期化
+  });
+
+  // ------------------------------
+  // ページトップボタン
+  // ------------------------------
+  function pageTop() {
+    var topBtn = $('.js-pagetop');
+    topBtn.click(function () {
+      $('body,html').animate({scrollTop: 0}, 300, 'swing');
+      return false;
+    });
+  }
+
+  // ------------------------------
+  // フロートボタン（SPのみ表示）
+  // ------------------------------
+  function floatBtn() {
+    var floatBtn = $('.js-floatBtn');
+    floatBtn.hide();
+
+    function toggleFloatBtn() {
+      if (window.innerWidth <= 767) {
+        if ($(window).scrollTop() > 70) {
+          floatBtn.fadeIn();
+        } else {
+          floatBtn.fadeOut();
+        }
+      } else {
+        floatBtn.hide();
+      }
+    }
+
+    toggleFloatBtn();
+    $(window).on('scroll resize', toggleFloatBtn);
+  }
+
+  // ------------------------------
+  // CTA付近でのエントリーボタン表示制御
+  // ------------------------------
+  function toggleEntryButton() {
+    const $entryBtn = $('.p-entry-btn');
+    const $entrySection = $('#CTA');
+    const showOffset = 100;
+    const duration = 300;
+    if (!$entrySection.length) return;
+
+    $(window).on('load scroll', function () {
+      const scrollTop = $(window).scrollTop();
+      const windowHeight = $(window).height();
+      const entryTop = $entrySection.offset().top;
+      if (scrollTop + windowHeight > entryTop) {
+        $entryBtn.fadeOut(duration);
+      } else if (scrollTop > showOffset) {
+        $entryBtn.fadeIn(duration);
+      } else {
+        $entryBtn.fadeOut(duration);
+      }
+    });
+  }
+
+  // ------------------------------
+  // アンカーリンクのクリック時制御
+  // ------------------------------
+  function anchorAdjustment() {
+    $(document).on('click', 'a[href*="#"]', function () {
+      const href = $(this).attr('href');
+      const hash = href.split('#')[1];
+      const $target = $('#' + hash);
+
+      if ($target.length) {
+        const headerHeight = $('header').innerHeight() || 0;
+        const offset = $target.offset().top - headerHeight;
+        const duration = (window.innerWidth > 767) ? 0 : 400;
+        setTimeout(function () {
+          $('html,body').animate({ scrollTop: offset }, duration, 'swing');
+        }, 100);
+        return false;
+      }
+    });
+  }
+
+  // ------------------------------
+  // ページ初期読み込み時のハッシュ処理
+  // ------------------------------
+  function scrollToHashOnLoad() {
+    const hash = window.location.hash;
+    if (!hash) return;
+  
+    const $target = $(hash);
+    if (!$target.length) return;
+  
+    const headerHeight = $('header').innerHeight() || 0;
+    const scrollTime = 400;
+  
+    // 最初にトップへスクロール（上から下に見せる演出）
+    $('html, body').scrollTop(0);
+  
+    // タブならクリック → DOM切り替え完了後にスクロール
+    if ($target.hasClass('js-tab')) {
+      $target.trigger('click');
+  
+      setTimeout(function () {
+        const offset = $target.offset().top - headerHeight;
+        $('html, body').animate({ scrollTop: offset }, scrollTime, 'swing');
+      }, 300); // タブ切り替え完了を待ってから
+      return;
+    }
+  
+    // 通常要素は少し待ってからスクロール
+    setTimeout(function () {
+      const offset = $target.offset().top - headerHeight;
+      $('html, body').animate({ scrollTop: offset }, scrollTime, 'swing');
+    }, 400);
+  }
+  
+  
+
+  // ------------------------------
+  // ハンバーガーメニューの開閉制御
+  // ------------------------------
+  function header() {
+    var hamburger = $('.js-hamburger');
+    var nav = $('.js-hamburger__nav');
+    var hamburgerActive = false;
+
+    hamburger.attr('aria-expanded', 'false');
+    nav.attr('aria-hidden', 'true');
+
+    hamburger.on('click', function () {
+      nav.toggleClass('active');
+      $(this).toggleClass('active');
+      $('.p-header__inner').toggleClass('is-gnav-active');
+      hamburgerActive = !hamburgerActive;
+
+      hamburger.attr('aria-expanded', hamburgerActive);
+      nav.attr('aria-hidden', !hamburgerActive);
+    });
+
+    $('.p-header__dropdownLink, .p-header__btn--link').on('click', function() {
+      hamburger.removeClass('active');
+      nav.removeClass('active');
+      hamburger.attr('aria-expanded', 'false');
+      nav.attr('aria-hidden', 'true');
+    });
+  }
+
+  // ------------------------------
+  // アコーディオン動作
+  // ------------------------------
+  function Accordion() {
+    var AccordBody = $('.js-Accord-body');
+    AccordBody.hide();
+    $('.js-Accord.active').next('.js-Accord-body').show();
+
+    $('.js-Accord').on('click', function () {
+      $(this).next('.js-Accord-body').slideToggle();
+      $(this).toggleClass('active');
+    });
+  }
+
+  // ------------------------------
+  // Swiperスライダー群
+  // ------------------------------
+  function sliders() {
+    new Swiper(".p-top-voice__slider", {
+      loop: true,
+      slidesPerView: 1.28245,
+      centeredSlides: true,
+      spaceBetween: 20,
+      speed: 1000,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2.678,
+          slidesPerView: 'auto',
+          centeredSlides: false,
+        }
+      }
+    });
+
+    new Swiper(".p-top-about__swiper", {
+      loop: true,
+      slidesPerView: 1,
+      speed: 2000,
+      spaceBetween: 10,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".p-top-about__swiper-pagination",
+        clickable: true,
+      },
+    });
+
+    new Swiper(".p-logo-wrapper__swiper", {
+      loop: true,
+      slidesPerView: 3.0076,
+      spaceBetween: 7,
+      speed: 6000,
+      allowTouchMove: false,
+      autoplay: {
+        delay: 0,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 6.0935,
+          spaceBetween: 18,
+        }
+      }
+    });
+
+    new Swiper(".p-access__swiper.swiper-left", {
+      loop: true,
+      slidesPerView: 2.5428,
+      spaceBetween: 9,
+      speed: 6000,
+      allowTouchMove: false,
+      autoplay: {
+        delay: 0,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 3.3129,
+          spaceBetween: 22,
+        }
+      }
+    });
+  }
+
+  function initAccessRightSwiper() {
+    const $rightSwiperWrapper = $(".p-access__swiper.swiper-right .swiper-wrapper");
+    if ($rightSwiperWrapper.length) {
+      const slides = $rightSwiperWrapper.children('.swiper-slide');
+      for (let i = 0; i < 2; i++) {
+        slides.clone().appendTo($rightSwiperWrapper);
+      }
+    }
+
+    new Swiper(".p-access__swiper.swiper-right", {
+      loop: true,
+      slidesPerView: 2.5428,
+      spaceBetween: 9,
+      speed: 6000,
+      allowTouchMove: false,
+      effect: 'slide',
+      watchSlidesProgress: true,
+      autoplay: {
+        delay: 0,
+        reverseDirection: true
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 3.3129,
+          spaceBetween: 22,
+        }
+      }
+    });
+  }
+
+  // ------------------------------
+  // 遅延表示Swiperの初期化
+  // ------------------------------
+  function initSwiperOnVisible() {
+    const $target = $('.p-access__swiper.swiper-right');
+    let isSwiperInited = false;
+    if (!$target.length) return;
+
+    function checkVisibleAndInit() {
+      if (isSwiperInited) return; // 初期化済みなら何もしない
+      const windowTop = $(window).scrollTop();
+      const windowBottom = windowTop + $(window).height();
+      const targetTop = $target.offset().top;
+
+      if (targetTop < windowBottom) {
+        isSwiperInited = true;
+        initAccessRightSwiper();
+      }
+    }
+
+    $(window).on('load scroll resize', checkVisibleAndInit);
+  }
+
+  // ------------------------------
+  // ナビゲーションのホバー＆クリック制御
+  // ------------------------------
+  function manageNavInteraction() {
+    $('.js-hover').hover(function () {
+      if (window.innerWidth > 767) {
+        $(this).siblings('.p-header__wrapper').stop(true, true).fadeIn();
+        $(this).addClass('active');
+        $("body").addClass('bg');
+      }
+    }, function () {
+      if (window.innerWidth > 767) {
+        const $this = $(this);
+        setTimeout(function () {
+          if (!$this.siblings('.p-header__wrapper').is(':hover')) {
+            $this.siblings('.p-header__wrapper').stop(true, true).fadeOut();
+            $this.removeClass('active');
+            $("body").removeClass('bg');
+          }
+        }, 100);
+      }
+    });
+
+    $('.p-header__wrapper').hover(function () {
+      if (window.innerWidth > 767) {
+        const $wrapper = $(this);
+        const $trigger = $wrapper.siblings('.js-hover');
+        $wrapper.stop(true, true).fadeIn();
+        $trigger.addClass('active');
+        $("body").addClass('bg');
+      }
+    }, function () {
+      if (window.innerWidth > 767) {
+        const $wrapper = $(this);
+        const $trigger = $wrapper.siblings('.js-hover');
+        $wrapper.stop(true, true).fadeOut();
+        $trigger.removeClass('active');
+        $("body").removeClass('bg');
+      }
+    });
+
+    $('.js-hover').click(function (e) {
+      if (window.innerWidth <= 767) {
+        $(this).toggleClass('active');
+        e.preventDefault();
+        var $dropdown = $(this).siblings('.p-header__wrapper');
+        if ($dropdown.is(':visible')) {
+          $dropdown.stop(true, true).slideUp();
+        } else {
+          $('.p-header__wrapper').slideUp();
+          $dropdown.stop(true, true).slideDown();
+        }
+      }
+    });
+
+    $(window).resize(function () {
+      if (window.innerWidth > 767) {
+        $('.p-header__wrapper').hide();
+        $('.js-hover').removeClass('active');
+        $('body').removeClass('bg');
+      }
+    });
+  }
+
+
+});
+
+// ------------------------------
+// モーダル動作
+// ------------------------------
+$(function () {
+  var open = $('.js-modal'),
+      close = $('.p-modal__btn'),
+      container = $('.js-modal-container'),
+      lastFocusedElement;
+
+  // モーダルを開く
+  open.on('click', function () {
+    var targetModalId = $(this).data('target');
+    var modal = $('#' + targetModalId);
+    modal.addClass('active');
+    modal.attr({ 'aria-modal': 'true', 'role': 'dialog' });
+
+    // モーダルを開いた時点でのフォーカスを記録
+    lastFocusedElement = document.activeElement;
+
+    // フォーカスを閉じるボタンに移動
+    var closeBtn = modal.find('.p-modal__btn');
+    if (closeBtn.length) {
+      closeBtn.focus();
+    }
+
+    return false;
+  });
+
+  // モーダルを閉じる（ボタンクリック時）
+  close.on('click', function () {
+    var modal = $(this).closest('.js-modal-container');
+    modal.removeClass('active');
+
+    // js-modal からのフォーカスであれば戻さない（スムーススクロール防止）
+    if (
+      lastFocusedElement &&
+      typeof lastFocusedElement.focus === 'function' &&
+      !$(lastFocusedElement).hasClass('js-modal')
+    ) {
+      lastFocusedElement.focus();
     }
   });
 
-  // ページトップボタンをクリックしたらスクロールして上に戻る
-  topBtn.click(function () {
-    $('body,html').animate({
-      scrollTop: 0
-    }, 300, 'swing');
-    return false;
+  // モーダルの外側クリックで閉じる
+  $(document).on('click', function (e) {
+    if (!$(e.target).closest('.p-modal__wrapper').length) {
+      container.removeClass('active');
+
+      if (
+        lastFocusedElement &&
+        typeof lastFocusedElement.focus === 'function' &&
+        !$(lastFocusedElement).hasClass('js-modal')
+      ) {
+        lastFocusedElement.focus();
+      }
+    }
   });
 
-  // スムーススクロール (絶対パスのリンク先が現在のページであった場合でも作動。ヘッダーの高さ考慮。)
-  $(document).on('click', 'a[href*="#"]', function () {
-    let time = 400;
-    let header = $('header').innerHeight();
-    let target = $(this.hash);
-    if (!target.length) return;
-    let targetY = target.offset().top - header;
-    $('html,body').animate({ scrollTop: targetY }, time, 'swing');
-    return false;
+  // Escキーで閉じる
+  $(document).on('keydown', function (e) {
+    if (e.key === 'Escape') {
+      $('.js-modal-container.active').removeClass('active');
+
+      if (
+        lastFocusedElement &&
+        typeof lastFocusedElement.focus === 'function' &&
+        !$(lastFocusedElement).hasClass('js-modal')
+      ) {
+        lastFocusedElement.focus();
+      }
+    }
+  });
+});
+
+
+// ------------------------------
+// チェックボックスのフォーカス制御
+// ------------------------------
+document.addEventListener('click', function(e) {
+  const label = e.target.closest('label');
+  if (!label) return;
+
+  const targetId = label.getAttribute('for');
+  if (targetId) {
+    const targetInput = document.getElementById(targetId);
+    if (targetInput) {
+      targetInput.focus();
+    }
+  }
+});
+
+
+// ------------------------------
+// プライバシーポリシーのチェックボックスのフォーカス制御
+// ------------------------------
+jQuery(function($){
+  const $policyCheckbox = $('input[name="your_policy[]"]');
+
+  $policyCheckbox.on('change', function(){
+    const $control = $(this).closest('.wpcf7-form-control');
+
+    if ($(this).is(':checked')) {
+      $control.addClass('is-checked');
+    } else {
+      $control.removeClass('is-checked');
+    }
   });
 
+  // 初期化時にも一応チェック（フォーム再送信後など）
+  $policyCheckbox.trigger('change');
 });
