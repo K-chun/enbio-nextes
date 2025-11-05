@@ -2,8 +2,10 @@
 
 .p-contact {
   padding-top: myrem(52);
+  padding-bottom: myrem(66);
   @include mq(md){
     padding-top: myrem(120);
+    padding-bottom: myrem(189);
   }
 }
 
@@ -29,11 +31,14 @@
 }
 
 .p-contact__wrap {
-
+  margin-top: myrem(27);
+  @include mq(md){
+    margin-top: myrem(68);
+  }
 }
 
 .p-contact__form {
-
+  border-top: 1px solid $line-color-light;
 }
 
 .p-form {

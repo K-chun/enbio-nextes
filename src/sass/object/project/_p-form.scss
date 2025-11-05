@@ -1,11 +1,218 @@
 @use "global" as *;
 
 
+.p-form input,
+.p-form textarea,
+.p-form select {
+  width: 100%;
+  height: myrem(46);
+  padding: myrem(10) myrem(16);
+  font-size: myrem(14);
+  color: $black;
+  line-height: 1.5;
+  letter-spacing: 0;
+  font-weight: 400;
+  background-color: #F3F3F3;
+  border: 1px solid #F3F3F3;
+  box-sizing: border-box;
+  border-radius: 4px;
+  @include mq(md){
+    height: myrem(46);
+    padding: myrem(10) myrem(16);
+    font-size: myrem(14);
+    transition: .3s;
+  }
+}
+.p-form ::placeholder{
+  color: #A1A1A1;
+}
+
+.p-form input:hover,
+.p-form select:hover,
+.p-form textarea:hover {
+  @include mq(md){
+    border: 1px solid $green;
+    cursor: pointer;
+  }
+}
+
+.p-form input:focus,
+.p-form select:focus,
+.p-form textarea:focus {
+  border: 1px solid $green !important;
+  box-sizing: border-box;
+  outline: none;
+  box-shadow: none;
+}
+
+.p-form input {
+  @include mq(md){
+    width: myrem(374);
+  }
+}
+
+.p-form textarea {
+  height: myrem(160);
+  @include mq(md){
+    height: myrem(200);
+  }
+}
+
+
+.p-form__table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+.p-form__table tr {
+  border-bottom: 1px solid $line-color-light;
+}
+
+.p-form__table th {
+  padding: myrem(26) 0;
+  font-size: myrem(16);
+  color: $darkgreen;
+  text-align: left;
+  line-height: calc(23 / 16);
+  font-weight: 600;
+  @include mq(md){
+    width: myrem(265);
+    padding: myrem(28) 0 myrem(25) myrem(24);
+    font-size: myrem(18);
+    line-height: calc(26 / 18);
+    display: flex;
+  }
+}
+
+.p-form__table th span {
+  width: 100%;
+  display: flex;
+  @include mq(md){
+    justify-content: space-between;
+  }
+}
+
+.p-form__table th em {
+  padding: myrem(8);
+  font-size: myrem(14);
+  color: $white;
+  line-height: 1;
+  font-style: normal;
+  font-weight: 600;
+  background: #A83900;
+  border-radius: 4px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  @include mq(md){
+    padding: myrem(4) myrem(8);
+  }
+}
+
+.p-form__table td {
+  padding: myrem(26) 0;
+  @include mq(md){
+    width: myrem(764);
+    padding: myrem(25) myrem(6) myrem(25) myrem(60);
+  }
+}
+
+.text-input {
+
+}
+
+._top {
+
+}
+
+.textarea {
+
+}
+
+
+
+.p-form__agree {
+  margin-top: myrem(26);
+  text-align: center;
+  @include mq(md){
+    margin-top: myrem(54);
+  }
+}
+
+.p-form .p-form__agree-input {
+  display: none;
+}
+
+.p-form__agree label {
+  display: inline-block;
+  align-items: center;
+  padding-left: myrem(25);
+  font-size: myrem(18);
+  text-align: left;
+  line-height: calc(24 / 18);
+  letter-spacing: 0;
+  font-weight: 400;
+  // gap: 0.5em;
+  flex-wrap: wrap;
+  position: relative;
+  @include mq(md){
+    padding-left: myrem(20);
+    font-size: myrem(18);
+    text-align: center;
+    line-height: calc(22 / 18);
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    transition: .3s ease;
+  }
+}
+
+.p-form__agree label::before {
+  content: '';
+  width: myrem(16);
+  height: myrem(16);
+  background-color: $white;
+  border-radius: 4px;
+  border: 2px solid $line-color;
+  position: absolute;
+  top: myrem(1);
+  left: 0;
+  @include mq(md){
+    width: myrem(16);
+    height: myrem(16);
+    top: myrem(4);
+    left: myrem(-4);
+  }
+}
+
+.p-form__agree-input:checked+label::after {
+  content: '';
+  width: myrem(11);
+  height: myrem(6);
+  border-top: myrem(3) solid $green;
+  border-right: myrem(3) solid $green;
+  position: absolute;
+  top: myrem(5);
+  left: myrem(2);
+  transform: rotate(135deg);
+  @include mq(md){
+    width: myrem(11);
+    height: myrem(6);
+    top: myrem(8);
+    left: myrem(-2);
+  }
+}
+
+
+
 
 .p-form__privacy {
+  margin-top: myrem(62);
   @include mq(md){
     max-width: myrem(1024);
     margin-inline: auto;
+    margin-top: myrem(52);
   }
 }
 
@@ -14,6 +221,8 @@
 }
 
 .p-form__privacy-inner {
+  height: myrem(704);
+  padding: myrem(31) myrem(30) 0 myrem(16);
   @include mq(md){
     height: myrem(498);
     padding: myrem(53) myrem(50);
@@ -21,7 +230,7 @@
 }
 
 .p-form__privacy-area {
-  margin-bottom: myrem(20);
+  margin-bottom: myrem(32);
   @include mq(md){
     margin-bottom: myrem(36);
   }
@@ -46,3 +255,95 @@
   }
 }
 
+.p-form__submit {
+  width: myrem(240);
+  margin-inline: auto;
+  margin-top: myrem(33);
+  position: relative;
+  @include mq(md){
+    margin-top: myrem(44);
+    transition: .3s ease;
+  }
+}
+
+.p-form__submit:hover {
+  @include mq(md){
+    opacity: 1;
+  }
+}
+
+.p-form__submit::before {
+  @include mq(md){
+    content: '';
+    width: 0;
+    height: 100%;
+    border: 1px solid $green;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.4s ease 0s;
+    background: $darkgreen;
+    z-index: 100;
+  }
+}
+.p-form__submit:hover::before {
+  @include mq(md){
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.p-form__submit::after {
+  content: '';
+  width: myrem(20);
+  height: myrem(22);
+  background: url(../images/common/icon_power.svg) no-repeat center center / 100%;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+  @include mq(md){
+    width: myrem(20);
+    height: myrem(22);
+    right: myrem(24);
+    // transition: all 0.4s ease 0s;
+    z-index: 101;
+    opacity: 1;
+  }
+}
+.p-form__submit:hover::after {
+  @include mq(md){
+    mask-position: center center;
+    mask-repeat: no-repeat;
+    mask-size: 100%;
+    mask-image: url(../images/common/icon_power.svg);
+    background: $yellow-hover;
+  }
+}
+
+.p-form__submit input {
+  width: 100%;
+  height: myrem(60);
+  font-size: myrem(18);
+  color: $white;
+  line-height: 1;
+  letter-spacing: 0.09em;
+  font-weight: 700;
+  border-radius: 6px;
+  background: $green;
+  position: relative;
+  z-index: 101;
+  @include mq(md){
+    font-size: myrem(20);
+    opacity: 1;
+    // transition: all 0.4s ease 0s;
+  }
+}
+
+.p-form__submit:hover input {
+  @include mq(md){
+    background: transparent;
+  }
+}

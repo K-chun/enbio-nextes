@@ -52,27 +52,28 @@ button {
   }
 }
 
-.simplebar-track .simplebar-scrollbar {
-  height: myrem(48) !important;
-  border-radius: 8px;
-  overflow: hidden;
-  @include mq(md){
-    height: calc(328 / 498 * 100%) !important;
-    border-radius: 12px;
-  }
-}
-
 .simplebar-track.simplebar-vertical {
   width: myrem(8);
+  height: calc(642 / 704 * 100%);
   border-radius: 8px;
   top: 50%;
-  right: myrem(8);
+  right: myrem(10);
   transform: translateY(-50%);
   @include mq(md){
     width: myrem(12);
     height: calc(448 / 498 * 100%);
     border-radius: 12px;
     right: myrem(18);
+  }
+}
+
+.simplebar-track .simplebar-scrollbar {
+  height: calc(328 / 642 * 100%) !important;
+  border-radius: 8px;
+  overflow: hidden;
+  @include mq(md){
+    height: calc(328 / 498 * 100%) !important;
+    border-radius: 12px;
   }
 }
 
