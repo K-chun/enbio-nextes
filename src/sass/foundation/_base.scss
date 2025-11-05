@@ -5,9 +5,9 @@ $breakpointInner: $innerWidth + strip-unit($padding-pc) * 2;
 
 // ルートフォント設定
 html {
-  // ~ 375px
-  @media (max-width: 375px) {
-    font-size: vw(375, 16);
+  // ~ 390px
+  @media (max-width: 390px) {
+    font-size: vw(390, 16);
   }
 
   // 376px ~ 767px

@@ -1,0 +1,16 @@
+@use "global" as *;
+
+.p-article {
+  font-size: myrem(16);
+  line-height: calc(32 / 16);
+  word-break: break-all;
+  @include mq(md){
+    font-size: myrem(18);
+    line-height: calc(32 / 18);
+  }
+}
+
+.p-article a {
+  display: inline-block;
+  color: $darkgreen;
+}
