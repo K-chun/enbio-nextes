@@ -64,17 +64,14 @@
     width: myrem(20);
     height: myrem(22);
     right: myrem(24);
-    // transition: all 0.4s ease 0s;
+    // transition: all 0.6s ease 0s;
     opacity: 1;
   }
 }
 .c-btn01:hover::after {
   @include mq(md){
-    mask-position: center center;
-    mask-repeat: no-repeat;
-    mask-size: 100%;
-    mask-image: url(../images/common/icon_power.svg);
-    background: $yellow-hover;
+    background: url(../images/common/icon_power_yellow.svg) no-repeat center center / 100%;
+    transition-delay: 0.4s;
   }
 }
 

@@ -290,6 +290,7 @@
 }
 
 .p-form__submit-action {
+  background: $green;
   position: relative;
 }
 
@@ -361,7 +362,8 @@
 
 .p-form__submit-action input {
   color: $white;
-  background: $green;
+  background: transparent;
+  // background: $green;
   border: myrem(2) solid $green;
 }
 
@@ -372,8 +374,9 @@
 
 .p-form__submit-action:hover input {
   @include mq(md){
-    background: transparent;
-    border: myrem(2) solid $green;
+    // background: transparent;
+    // // border: myrem(2) solid $green;
+    // transition: background 1.0s ease;
   }
 }
 
@@ -406,11 +409,8 @@
 }
 .p-form__submit-action:hover::after {
   @include mq(md){
-    mask-position: center center;
-    mask-repeat: no-repeat;
-    mask-size: 100%;
-    mask-image: url(../images/common/icon_power.svg);
-    background: $yellow-hover;
+    background: url(../images/common/icon_power_yellow.svg) no-repeat center center / 100%;
+    transition-delay: 0.4s;
   }
 }
 
