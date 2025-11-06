@@ -63,8 +63,31 @@
   color: $white;
   line-height: 1;
   font-weight: 400;
+  position: relative;
   @include mq(md){
     font-size: myrem(18);
+  }
+}
+
+.p-footer__navLink::after {
+  @include mq(md){
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: $white;
+    position: absolute;
+    bottom: myrem(-8);
+    left: 0;
+    transform: scale(0, 1);
+    transform-origin: right top;
+    transition: transform 0.3s;
+  }
+}
+.p-footer__navLink:hover::after {
+  @include mq(md){
+    transform: scale(1, 1);
+    transform-origin: left top;
+    opacity: 1;
   }
 }
 

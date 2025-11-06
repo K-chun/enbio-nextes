@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 6px;
-  border: 2px solid $green;
+  border: myrem(2) solid $green;
   background: $green;
   position: relative;
   @include mq(md){
@@ -17,7 +17,7 @@
 }
 
 .c-btn01--dg {
-  border: 2px solid $darkgreen;
+  border: myrem(2) solid $darkgreen;
   background: $darkgreen;
 }
 
@@ -26,7 +26,7 @@
     content: '';
     width: 0;
     height: 100%;
-    border: 2px solid $green;
+    border: myrem(2) solid $green;
     border-radius: 6px;
     position: absolute;
     top: 0;
@@ -44,7 +44,7 @@
 
 .c-btn01--dg::before {
   @include mq(md){
-    border: 2px solid $darkgreen;
+    border: myrem(2) solid $darkgreen;
     background: $green;
   }
 }
