@@ -43,6 +43,15 @@ button {
 }
 
 
+@media print {
+  body {
+    zoom: 0.5;
+  }
+  body .p-header {
+    position: absolute;
+  }
+}
+
 
 
 .simplebar-track {
