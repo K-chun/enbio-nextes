@@ -302,7 +302,7 @@
     content: '';
     width: 0;
     height: 100%;
-    border: 1px solid $green;
+    border: 2px solid $green;
     border-radius: 6px;
     position: absolute;
     top: 0;
@@ -324,7 +324,7 @@
     content: '';
     width: 0;
     height: 100%;
-    border: 1px solid $line-color;
+    border: 2px solid $line-color;
     border-radius: 6px;
     position: absolute;
     top: 0;
@@ -362,16 +362,18 @@
 .p-form__submit-action input {
   color: $white;
   background: $green;
+  border: 2px solid $green;
 }
 
 .p-form__submit-back input {
   background: $white;
-  border: 1px solid $line-color;
+  border: 2px solid $line-color;
 }
 
 .p-form__submit-action:hover input {
   @include mq(md){
     background: transparent;
+    border: 2px solid $green;
   }
 }
 
@@ -379,7 +381,7 @@
   @include mq(md){
     background: transparent;
     color: $white;
-    border: 1px solid $line-color;
+    border: 2px solid $line-color;
   }
 }
 
@@ -424,7 +426,7 @@
   letter-spacing: 0.09em;
   font-weight: 700;
   border-radius: 6px;
-  border: 1px solid $green;
+  border: 2px solid $green;
   background: $green;
   position: relative;
   z-index: 101;
