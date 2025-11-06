@@ -15,7 +15,7 @@
         <li class="p-header__navItem"><a href="/oandm/" class="p-header__navLink">O&amp;M</a></li>
         <li class="p-header__navItem"><a href="/strength/" class="p-header__navLink">強み</a></li>
         <li class="p-header__navItem"><a href="/company/" class="p-header__navLink">会社概要</a></li>
-        <li class="p-header__navItem"><a href="/news/" class="p-header__navLink">おしらせ</a></li>
+        <li class="p-header__navItem"><a href="/news/" class="p-header__navLink">お知らせ</a></li>
         <li class="p-header__navItem"><a href="/recruit/" class="p-header__navLink">採用情報</a></li>
       </ul>
   

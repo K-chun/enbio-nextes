@@ -8,7 +8,7 @@
         <li class="p-footer__navItem"><a href="/strength/" class="p-footer__navLink">強み</a></li>
         <li class="p-footer__navItem"><a href="/service/" class="p-footer__navLink">サービス</a></li>
         <li class="p-footer__navItem"><a href="/company/" class="p-footer__navLink">会社概要</a></li>
-        <li class="p-footer__navItem"><a href="/news/" class="p-footer__navLink">おしらせ</a></li>
+        <li class="p-footer__navItem"><a href="/news/" class="p-footer__navLink">お知らせ</a></li>
         <li class="p-footer__navItem"><a href="/recruit/" class="p-footer__navLink">採用情報</a></li>
         <li class="p-footer__navItem"><a href="/contact/" class="p-footer__navLink">お問い合わせ</a></li>
       </ul>        
