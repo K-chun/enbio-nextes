@@ -85,45 +85,87 @@
 
     <section class="p-contact">
       <div class="p-contact__inner l-inner">
-        <div class="p-contact__title">
-          <hgroup class="c-title01">
-            <h3 class="c-title01__main">ご入力フォーム</h3>
-          </hgroup>
+        <div class="p-contact__area">
+          <p class="p-contact__read">当社独自の技術を活用して、あらゆるエネルギー活用の可能性を見出します｡<br>
+            太陽光エネルギー発電所や蓄電池発電所のEPC、O&M、蓄電池システムの開発などに関する、ご質問やご相談をお受けしております｡</p>
+
         </div>
-        <p class="p-contact__read">事業に関するご質問やご相談、採用のこと、弊社へのご意見など、どのようなことでもお気軽に下記フォームからお問い合わせください。</p>
+        <div class="p-contact__head tel">
+          <div class="p-contact__title">
+            <hgroup class="c-title01">
+              <h3 class="c-title01__main">お電話でのお問い合わせ</h3>
+            </hgroup>
+          </div>
+          <p class="p-contact__read">お急ぎの場合は、お電話でお問い合わせください。</p>
+          <div class="p-contact__tel">
+            <div class="p-contact__tel-inner">
+              <h4 class="p-contact__tel-title">代表</h4>
+              <a href="tel:03-5297-7288" class="p-contact__tel-number">03-5297-7288</a>
+              <div class="p-contact__tel-area">
+                <p class="p-contact__tel-text">受付時間 月曜～金曜9:00～18:00<br class="u-sp">※年末年始・GW・夏季・冬季期間は除きます。</p>
+                  <p class="p-contact__tel-text">製品・資材のご購入・サポートに関するご相談は、<a href="tel:03-5577-5528">03-5577-5528</a> へ。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-contact__head form">
+          <div class="p-contact__title">
+            <hgroup class="c-title01">
+              <h3 class="c-title01__main">ご入力フォーム</h3>
+            </hgroup>
+          </div>
+          <p class="p-contact__read">事業に関するご質問やご相談、採用のこと、弊社へのご意見など、どのようなことでもお気軽に下記フォームからお問い合わせください。</p>
+        </div>
         <div class="p-contact__wrap">
           <div class="p-contact__form p-form">
             <form method="post" action="form.php">
               <input type="hidden" name="formname" value="ebg01"/>
               <table class="p-form__table">
-                  <tr>
-                      <th><span>企業名</span></th>
-                      <td><input type="text" name="item01" class="text-input" placeholder="例）株式会社エンバイオ・ネクテス"/></td>
-                  </tr>
-                  <tr>
-                      <th><span>部署・役職名</span></th>
-                      <td><input type="text" name="item02" class="text-input" placeholder="例）営業部部長"/></td>
-                  </tr>
-                  <tr>
-                      <th><span>お名前<em>必須</em></span></th>
-                      <td><input type="text" name="item03" class="text-input" required placeholder="例）田中 一郎"/></td>
-                  </tr>
-                  <tr>
-                      <th><span>おなまえ<em>必須</em></span></th>
-                      <td><input type="text" name="item04" class="text-input" required placeholder="例）たなか いちろう"/></td>
-                  </tr>
-                  <tr>
-                      <th><span>メールアドレス<em>必須</em></span></th>
-                      <td><input type="email" name="item05" class="text-input" required placeholder="例）abc@enbio-holdings.com　※半角英数字"/></td>
-                  </tr>
-                  <tr>
-                      <th><span>電話番号<em>必須</em></span></th>
-                      <td><input type="tel" name="item06" pattern="[-0-9]*" class="text-input" required placeholder="例）03-5297-7155　※半角数字"/></td>
-                  </tr>
-                  <tr>
-                      <th class="_top"><span>お問い合わせ内容<em>必須</em></span></th>
-                      <td><textarea rows="7" cols="30" name="item07" class="textarea" maxlength="1000" required ></textarea></td>
-                  </tr>
+                <tr>
+                  <th><span>お問い合わせの種類</span></th>
+                  <td class="p-form__radio">
+                    <span>
+                      <label>
+                        <input type="radio" name="radio01" value="サービスについて" class="p-form__radio-input">
+                        <span class="radio-input-text">サービスについて</span>
+                      </label>
+                    </span>
+                    <span>
+                      <label>
+                        <input type="radio" name="radio01" value="採用関連" class="p-form__radio-input">
+                        <span class="radio-input-text">採用関連</span>
+                      </label>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th><span>企業名</span></th>
+                  <td><input type="text" name="item01" class="text-input" placeholder="例）株式会社エンバイオ・ネクテス"/></td>
+                </tr>
+                <tr>
+                  <th><span>部署・役職名</span></th>
+                  <td><input type="text" name="item02" class="text-input" placeholder="例）営業部部長"/></td>
+                </tr>
+                <tr>
+                  <th><span>お名前<em>必須</em></span></th>
+                  <td><input type="text" name="item03" class="text-input" required placeholder="例）田中 一郎"/></td>
+                </tr>
+                <tr>
+                  <th><span>おなまえ<em>必須</em></span></th>
+                  <td><input type="text" name="item04" class="text-input" required placeholder="例）たなか いちろう"/></td>
+                </tr>
+                <tr>
+                  <th><span>メールアドレス<em>必須</em></span></th>
+                  <td><input type="email" name="item05" class="text-input" required placeholder="例）abc@enbio-holdings.com　※半角英数字"/></td>
+                </tr>
+                <tr>
+                  <th><span>電話番号<em>必須</em></span></th>
+                  <td><input type="tel" name="item06" pattern="[-0-9]*" class="text-input" required placeholder="例）03-5297-7155　※半角数字"/></td>
+                </tr>
+                <tr>
+                  <th class="_top"><span>お問い合わせ内容<em>必須</em></span></th>
+                  <td><textarea rows="7" cols="30" name="item07" class="textarea" maxlength="1000" required ></textarea></td>
+                </tr>
               </table>
 
               <div class="p-form__agree">

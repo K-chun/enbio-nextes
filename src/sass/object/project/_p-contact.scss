@@ -1,7 +1,7 @@
 @use "global" as *;
 
 .p-contact {
-  padding-top: myrem(52);
+  padding-top: myrem(60);
   padding-bottom: myrem(66);
   @include mq(md){
     padding-top: myrem(120);
@@ -15,25 +15,121 @@
   }
 }
 
+.p-contact__head {
+  display: flex;
+  flex-direction: column;
+  row-gap: myrem(14);
+  @include mq(md){
+    row-gap: myrem(32);
+  }
+}
+
+.p-contact__head.tel {
+  margin-top: myrem(60);
+  @include mq(md){
+    margin-top: myrem(89);
+  }
+}
+
+.p-contact__head.form {
+  margin-top: myrem(74);
+  @include mq(md){
+    margin-top: myrem(126);
+  }
+}
+
 .p-contact__title {
 
 }
 
-.p-contact__read {
-  margin-top: myrem(14);
-  font-size: myrem(18);
-  line-height: calc(40 / 18);
+.p-contact__area {
+  padding-bottom: myrem(26);
+  border-bottom: 1px solid $line-color;
   @include mq(md){
-    margin-top: myrem(32);
+    padding-bottom: myrem(42);
+  }
+}
+
+.p-contact__read {
+  font-size: myrem(16);
+  line-height: calc(32 / 16);
+  @include mq(md){
     font-size: myrem(18);
     line-height: calc(40 / 18);
+  }
+}
+
+.p-contact__tel {
+  margin-top: myrem(20);
+  border: 1px solid $line-color;
+  @include mq(md){
+    margin-top: myrem(12);
+  }
+}
+
+.p-contact__tel-inner {
+  padding: myrem(30) myrem(14) myrem(24);
+  text-align: center;
+  @include mq(md){
+    padding: myrem(45) 0 myrem(63);
+  }
+}
+
+.p-contact__tel-title {
+  font-size: myrem(18);
+  text-align: center;
+  line-height: 1.5;
+  font-weight: 400;
+  @include mq(md){
+    font-size: myrem(18);
+  }
+}
+
+.p-contact__tel-number {
+  display: inline-block;
+  margin-top: myrem(12);
+  font-size: myrem(32);
+  line-height: 1;
+  font-family: $font-figtree;
+  font-weight: 600;
+  @include mq(md){
+    margin-top: myrem(12);
+    font-size: myrem(48);
+    pointer-events: none;
+  }
+}
+
+.p-contact__tel-area {
+  margin-top: myrem(18);
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: myrem(13);
+  @include mq(md){
+    margin-top: myrem(22);
+    row-gap: myrem(6);
+  }
+}
+
+.p-contact__tel-text {
+  font-size: myrem(14);
+  text-align: center;
+  line-height: calc(24 / 14);
+  @include mq(md){
+    font-size: myrem(18);
+    line-height: 1.5;
+  }
+}
+
+.p-contact__tel-text a {
+  @include mq(md){
+    pointer-events: none;
   }
 }
 
 .p-contact__wrap {
   margin-top: myrem(27);
   @include mq(md){
-    margin-top: myrem(68);
+    margin-top: myrem(57);
   }
 }
 

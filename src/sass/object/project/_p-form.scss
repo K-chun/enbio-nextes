@@ -58,6 +58,57 @@
   }
 }
 
+.p-form .p-form__radio {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  row-gap: myrem(3);
+}
+
+.p-form .p-form__radio span {
+  
+}
+
+.p-form .p-form__radio+label {
+  display: inline-block;
+  position: relative;
+  margin-right: .1rem;
+  padding-left: .2rem;
+  cursor: pointer;
+}
+
+.p-form .p-form__radio-input {
+  opacity: 0;
+  display: none;
+}
+
+.radio-input-text {
+  font-size: myrem(18);
+  display: flex;
+  align-items: center;
+  column-gap: myrem(14);
+  @include mq(md){
+    font-size: myrem(18);
+    column-gap: myrem(14);
+    cursor: pointer;
+  }
+}
+
+.radio-input-text::before {
+  content: "";
+  display: inline-block;
+  background: #fff;
+  border: myrem(2) solid $line-color;
+  border-radius: 100%;
+  width: myrem(19);
+  height: myrem(19);
+}
+
+input[type=radio]:checked + .radio-input-text::before {
+  background-color: $line-color;
+  -webkit-box-shadow: inset 0 0 0 myrem(3) #fff;
+  box-shadow: inset 0 0 0 myrem(3) #fff;
+}
 
 .p-form__table {
   width: 100%;
