@@ -59,6 +59,12 @@
   }
 }
 
+.p-contact__read a.tel {
+  @include mq(md){
+    pointer-events: none;
+  }
+}
+
 .p-contact__tel {
   margin-top: myrem(20);
   border: 1px solid $line-color;
