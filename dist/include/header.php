@@ -20,13 +20,13 @@
       </ul>
   
       <a href="/contact/" class="p-header__nav-contact u-sp">
-        <span class="p-header__nav-contact_icon"><img src="/images/common/icon_mail.svg" alt="" loading="lazy" decoding="async"></span>
+        <span class="p-header__nav-contact_icon"><img src="/images/common/icon_mail.svg" width="16" height="13" alt=" loading="lazy" decoding="async"></span>
         <span class="p-header__nav-contact_text">問い合わせ</span>
       </a>
     </nav>
   
     <a href="/contact/" class="p-header__btn">
-      <span class="p-header__btn-icon"><img src="/images/common/icon_mail.svg" alt="" loading="lazy" decoding="async"></span>
+      <span class="p-header__btn-icon"><img src="/images/common/icon_mail.svg" width="16" height="13" alt=" loading="lazy" decoding="async"></span>
       <span class="p-header__btn-text u-pc">問い合わせ</span>
     </a>
   
