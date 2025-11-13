@@ -1,0 +1,92 @@
+@use "global" as *;
+
+.p-section-message {
+  padding-top: myrem(50);
+  padding-bottom: myrem(68);
+  @include mq(md){
+    padding-top: myrem(112);
+    padding-bottom: myrem(30);
+  }
+}
+
+.p-section-message__inner {
+  @include mq(md){
+    max-width: myrem(1079);
+  }
+}
+
+.p-section-message__title {
+
+}
+
+.p-section-message__body {
+  margin-top: myrem(30);
+  display: flex;
+  flex-direction: column;
+  @include mq(md){
+    width: calc(1024 / 1029 * 100%);
+    margin-inline: auto;
+    margin-top: myrem(57);
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.p-section-message__content {
+  @include mq(md){
+    width: calc(620 / 1024 * 100%);
+  }
+}
+
+.p-section-message__text {
+  font-size: myrem(18);
+  line-height: calc(32 / 18);
+  @include mq(md){
+    font-size: myrem(18);
+    line-height: calc(40 / 18);
+  }
+}
+
+.p-section-message__image {
+  width: calc(270 / 360 * 100%);
+  margin-inline: auto;
+  margin-top: myrem(44);
+  @include mq(md){
+    width: calc(325 / 1024 * 100%);
+    margin-inline: 0;
+    margin-top: 0;
+  }
+}
+
+.p-section-message__img {
+
+}
+
+.p-section-message__img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.p-section-message__img-caption {
+  margin-top: myrem(14);
+  font-size: myrem(24);
+  line-height: calc(36 / 24);
+  display: flex;
+  flex-direction: column;
+  row-gap: myrem(9);
+  @include mq(md){
+    font-size: myrem(24);
+    line-height: calc(36 / 24);
+  }
+}
+
+.p-section-message__img-caption span {
+  display: block;
+  font-size: myrem(14);
+  line-height: calc(20 / 14);
+  @include mq(md){
+    font-size: myrem(14);
+    line-height: calc(36 / 14);
+  }
+}

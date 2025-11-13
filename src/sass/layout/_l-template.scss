@@ -1,0 +1,7 @@
+@use "global" as *;
+
+.l-template {
+  @include mq(md){
+    padding-bottom: myrem(160);
+  }
+}

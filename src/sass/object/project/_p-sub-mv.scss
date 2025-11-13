@@ -17,6 +17,13 @@
   }
 }
 
+.company .p-sub-mv__bg {
+  background-image: url(../images/company/mv_sp.jpg);
+  @include mq(md){
+    background-image: url(../images/company/mv_pc.jpg);
+  }
+}
+
 .contact .p-sub-mv__bg {
   background-image: url(../images/contact/mv_sp.jpg);
   @include mq(md){
