@@ -2,9 +2,9 @@
 
 .p-footer {
   background: $darkgreen;
-  padding: myrem(80) 0 myrem(82);
+  padding: myrem(48) 0 myrem(48);
   @include mq(md){
-    padding: myrem(96) 0;
+    padding: myrem(66) 0 myrem(64);
   }
 }
 
@@ -36,9 +36,9 @@
 }
 
 .p-footer__nav {
-  margin-top: myrem(37);
+  margin-top: myrem(46);
   @include mq(md){
-    margin-top: myrem(31);
+    margin-top: myrem(46);
   }
 }
 
@@ -47,7 +47,7 @@
   justify-content: center;
   flex-wrap: wrap;
   column-gap: myrem(26);
-  row-gap: myrem(22);
+  row-gap: myrem(20);
   @include mq(md){
     column-gap: myrem(38);
   }
@@ -91,8 +91,83 @@
   }
 }
 
+.p-footer__group {
+  margin-top: myrem(41);
+  text-align: center;
+  @include mq(md){
+    max-width: myrem(726);
+    margin-inline: auto;
+    margin-top: myrem(46);
+  }
+}
+
+.p-footer__group-head {
+  position: relative;
+}
+
+.p-footer__group-head::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: rgba($white, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
+.p-footer__group-title {
+  display: inline-flex;
+  padding-inline: myrem(32);
+  font-size: myrem(14);
+  color: $white;
+  line-height: calc(17 / 14);
+  font-weight: 400;
+  background: $darkgreen;
+  position: relative;
+  z-index: 1;
+  @include mq(md){
+    padding-inline: myrem(32);
+    font-size: myrem(18);
+  }
+}
+
+.p-footer__groupList {
+  margin-top: myrem(16);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: myrem(10);
+  @include mq(md){
+    margin-top: myrem(20);
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: myrem(33);
+    row-gap: myrem(31);
+  }
+}
+
+.p-footer__groupItem {
+
+}
+
+.p-footer__groupLink {
+  display: block;
+}
+
+.p-footer__groupLink img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 160 / 73;
+  @include mq(md){
+    aspect-ratio: 220 / 100;
+  }
+}
+
+
+
 .p-footer__copyright {
-  margin-top: myrem(38);
+  margin-top: myrem(36);
   font-size: myrem(12);
   color: $white;
   line-height: calc(32 / 12);
@@ -100,7 +175,7 @@
   font-weight: 400;
   text-align: center;
   @include mq(md){
-    margin-top: myrem(35);
+    margin-top: myrem(41);
     font-size: myrem(14);
     line-height: calc(32 / 14);
   }
