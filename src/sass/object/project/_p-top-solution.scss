@@ -1,0 +1,216 @@
+@use "global" as *;
+
+.p-top-solution {
+  padding-top: myrem(42);
+  padding-bottom: myrem(56);
+  @include mq(md){
+    padding-top: myrem(170);
+    padding-bottom: myrem(168);
+  }
+}
+
+.p-top-solution__inner {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.p-top-solution__top {
+  display: contents;
+  @include mq(md){
+    display: block;
+    border-bottom: 1px solid $line-color;
+    position: relative;
+  }
+}
+
+.p-top-solution__title {
+  order: 1;
+}
+
+.p-top-solution__btn {
+  margin-top: myrem(64);
+  text-align: center;
+  order: 3;
+  @include mq(md){
+    margin-top: 0;
+    position: absolute;
+    top: myrem(38);
+    right: myrem(20);
+  }
+}
+
+.p-top-solution__bottom {
+  margin-top: myrem(42);
+  order: 2;
+  @include mq(md){
+    margin-top: myrem(78);
+  }
+}
+
+.p-top-solution__list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: myrem(33);
+  @include mq(md){
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: myrem(59);
+    row-gap: myrem(72);
+  }
+}
+
+.p-top-solution__link {
+  transition: .3s ease;
+}
+
+.p-top-solution__link-top {
+  position: relative;
+  overflow: hidden;
+}
+
+.p-top-solution__link-img {
+  overflow: hidden;
+  border-radius: myrem(8);
+}
+
+.p-top-solution__link-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 360 / 223;
+  @include mq(md){
+    aspect-ratio: 374 / 231;
+    transition: .3s ease;
+  }
+}
+
+.p-top-solution__link:hover .p-top-solution__link-img img {
+  @include mq(md){
+    transform: scale(1.1);
+  }
+}
+
+.p-top-solution__link-arrow {
+  position: absolute;
+  bottom: myrem(19);
+  right: myrem(22);
+  z-index: 1;
+  @include mq(md){
+    bottom: auto;
+    bottom: myrem(17);
+    right: myrem(24);
+  }
+}
+
+.p-top-solution__link-bottom {
+  margin-top: myrem(25);
+  @include mq(md){
+    margin-top: myrem(24);
+  }
+}
+
+.p-top-solution__link-detail {
+  padding-bottom: myrem(20);
+  display: flex;
+  column-gap: myrem(17);
+  border-bottom: 1px solid $line-color;
+  @include mq(md){
+    padding-bottom: myrem(24);
+    column-gap: myrem(28);
+  }
+}
+
+.p-top-solution__link-number {
+  margin-top: myrem(3);
+  font-size: myrem(18);
+  color: $darkgreen;
+  letter-spacing: 0.07em;
+  font-family: $font-figtree;
+  font-weight: 700;
+  @include mq(md){
+    font-size: myrem(20);
+  }
+}
+
+.p-top-solution__link-title {
+  font-size: myrem(20);
+  line-height: calc(32 / 20);
+  font-weight: 400;
+  @include mq(md){
+    font-size: myrem(24);
+    line-height: calc(32 / 24);
+  }
+}
+
+.p-top-solution__link-body {
+  margin-top: myrem(12);
+  @include mq(md){
+    margin-top: myrem(24);
+  }
+}
+
+.p-top-solution__link-text {
+  font-size: myrem(16);
+  line-height: calc(32 / 16);
+  @include mq(md){
+    font-size: myrem(18);
+    line-height: calc(32 / 18);
+  }
+}
+
+.p-top-solution__readWrap {
+  position: absolute;
+  top: 28.6%;
+  left: 0;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  z-index: -1;
+  display: flex;
+  gap: myrem(40);
+  width: fit-content;
+  animation: solution-slide-sp 30s linear infinite;
+  white-space: nowrap;
+  @include mq(md){
+    top: 41%;
+    gap: myrem(80);
+    animation: solution-slide-pc 40s linear infinite;
+  }
+}
+// 無限スライドアニメーション（SP用）
+@keyframes solution-slide-sp {
+  0% {
+    transform: translateY(-50%) translateX(0);
+    -webkit-transform: translateY(-50%) translateX(0);
+  }
+  100% {
+    transform: translateY(-50%) translateX(calc(-50% - myrem(80)));
+    -webkit-transform: translateY(-50%) translateX(calc(-50% - myrem(80)));
+  }
+}
+
+// 無限スライドアニメーション（PC用）
+@keyframes solution-slide-pc {
+  0% {
+    transform: translateY(-50%) translateX(0);
+    -webkit-transform: translateY(-50%) translateX(0);
+  }
+  100% {
+    transform: translateY(-50%) translateX(calc(-50% - myrem(160)));
+    -webkit-transform: translateY(-50%) translateX(calc(-50% - myrem(160)));
+  }
+}
+
+.p-top-solution__read {
+  font-size: myrem(102);
+  color: $green-light;
+  line-height: calc(122 / 102);
+  font-family: $font-figtree;
+  font-weight: 300;
+  flex-shrink: 0;
+  text-align: center;
+  @include mq(md){
+    font-size: myrem(400);
+    line-height: calc(480 / 400);
+  }
+}

@@ -1,0 +1,72 @@
+@use "global" as *;
+
+.p-top-message__inner {
+  position: relative;
+  overflow: hidden;
+}
+
+.p-top-message__readWrap {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  z-index: 1;
+  display: flex;
+  gap: myrem(20);
+  width: 200vw;
+  animation: message-slide 20s linear infinite;
+  white-space: nowrap;
+}
+
+// 無限スライドアニメーション
+@keyframes message-slide {
+  0% {
+    transform: translateY(-50%) translateX(0);
+    -webkit-transform: translateY(-50%) translateX(0);
+  }
+  100% {
+    transform: translateY(-50%) translateX(-100vw); // 画面幅分だけ移動（2セット目が表示される位置）
+    -webkit-transform: translateY(-50%) translateX(-100vw);
+  }
+}
+
+.p-top-message__read {
+  font-size: myrem(48);
+  color: $white;
+  line-height: calc(56 / 48);
+  font-family: $font-figtree;
+  flex-shrink: 0;
+  text-align: center;
+  @include mq(md){
+    font-size: myrem(120);
+  }
+}
+
+.p-top-message__imgWrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+
+.p-top-message__img:nth-child(1) {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+
+.p-top-message__img:nth-child(2) {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  
+}
+
+.p-top-message__img:nth-child(3) {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.p-top-message__img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

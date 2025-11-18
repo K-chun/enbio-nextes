@@ -152,6 +152,15 @@
 
 .p-footer__groupLink {
   display: block;
+  @include mq(md){
+    transition: .3s ease;
+  }
+}
+
+.p-footer__groupLink:hover {
+  @include mq(md){
+    opacity: 0.7;
+  }
 }
 
 .p-footer__groupLink img {

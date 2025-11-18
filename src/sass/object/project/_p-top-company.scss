@@ -1,0 +1,134 @@
+@use "global" as *;
+
+.p-top-company {
+  padding-top: myrem(48);
+  padding-bottom: myrem(48);
+  background: $green-light;
+  @include mq(md){
+    padding-top: myrem(114);
+    padding-bottom: myrem(157);
+  }
+}
+
+.p-top-company__inner {
+
+}
+
+.p-top-company__top {
+
+}
+
+.p-top-company__title {
+
+}
+
+.p-top-company__bottom {
+  margin-top: myrem(40);
+  @include mq(md){
+    margin-top: myrem(60);
+  }
+}
+
+.p-top-company__list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: myrem(30);
+  @include mq(md){
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: myrem(60);
+  }
+}
+
+.p-top-company__item {
+  padding-bottom: myrem(34);
+  display: flex;
+  align-items: center;
+  column-gap: myrem(15);
+  border-bottom: 1px solid $line-color;
+  @include mq(md){
+    display: block;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.p-top-company__item-img {
+  width: calc(105 / 360 * 100%);
+  overflow: hidden;
+  @include mq(md){
+    width: 100%;
+  }
+}
+
+.p-top-company__item-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 105 / 60;
+  border-radius: myrem(4);
+  overflow: hidden;
+  @include mq(md){
+    aspect-ratio: 373 / 140;
+    transition: .3s ease;
+  }
+}
+
+a:hover .p-top-company__item-img img {
+  @include mq(md){
+    transform: scale(1.1);
+  }
+}
+
+.p-top-company__item-body {
+  width: calc(216 / 360 * 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  @include mq(md){
+    width: 100%;
+    margin-top: myrem(32);
+  }
+}
+
+.p-top-company__item-title {
+  display: flex;
+  flex-direction: column;
+  row-gap: myrem(6);
+  @include mq(md){
+    row-gap: myrem(16);
+  }
+}
+
+.p-top-company__item-sub {
+  font-size: myrem(16);
+  color: $green;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  font-family: $font-figtree;
+  font-weight: 600;
+  @include mq(md){
+    font-size: myrem(18);
+  }
+}
+
+.p-top-company__item-main {
+  font-size: myrem(18);
+  line-height: 1;
+  font-weight: 400;
+  @include mq(md){
+    font-size: myrem(24);
+  }
+}
+
+.p-top-company__arrow {
+  @include mq(md){
+    width: myrem(50);
+  }
+}
+
+.p-top-company__arrow .c-arrow {
+  @include mq(md){
+    width: myrem(50);
+    height: myrem(50);
+  }
+}

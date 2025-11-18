@@ -1,0 +1,56 @@
+@use "global" as *;
+
+.c-title02 {
+  padding-bottom: myrem(35);
+  display: flex;
+  flex-direction: column;
+  row-gap: myrem(14);
+  border-bottom: 1px solid $line-color;
+  position: relative;
+  @include mq(md){
+    padding-bottom: myrem(46);
+    row-gap: myrem(8);
+  }
+}
+
+.c-title02--wht {
+  border-bottom: 1px solid $white;
+}
+
+.c-title02::after {
+  content: "";
+  width: calc(40 / 360 * 100%);
+  height: 1px;
+  background: $darkgreen;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  z-index: 1;
+  @include mq(md){
+    width: calc(80 / 1240 * 100%);
+  }
+}
+
+.c-title02__sub {
+  font-size: myrem(48);
+  color: $darkgreen;
+  line-height: calc(56 / 48);
+  font-weight: 400;
+  font-family: $font-figtree;
+  @include mq(md){
+    font-size: myrem(80);
+  }
+}
+
+.c-title02__main {
+  font-size: myrem(18);
+  line-height: 1;
+  @include mq(md){
+    font-size: myrem(20);
+  }
+}
+
+.c-title02--wht .c-title02__sub,
+.c-title02--wht .c-title02__main {
+  color: $white;
+}

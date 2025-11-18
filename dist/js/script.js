@@ -47,6 +47,7 @@ jQuery(function ($) {
     sliders();              // 各Swiperスライダー初期化
     manageNavInteraction(); // ナビのホバー＆クリック制御
     initSwiperOnVisible();  // 遅延表示Swiperの初期化
+    serviceHoverEffect();   // Serviceセクションのhover効果
   });
 
   // ------------------------------
@@ -211,53 +212,21 @@ jQuery(function ($) {
   // Swiperスライダー群
   // ------------------------------
   function sliders() {
-    new Swiper(".p-top-voice__slider", {
-      loop: true,
-      slidesPerView: 1.28245,
-      centeredSlides: true,
-      spaceBetween: 20,
-      speed: 1000,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 2.678,
-          slidesPerView: 'auto',
-          centeredSlides: false,
-        }
-      }
-    });
 
-    new Swiper(".p-top-about__swiper", {
+    new Swiper(".p-top-concept__swiper", {
       loop: true,
-      slidesPerView: 1,
-      speed: 2000,
-      spaceBetween: 10,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: ".p-top-about__swiper-pagination",
-        clickable: true,
-      },
-    });
-
-    new Swiper(".p-logo-wrapper__swiper", {
-      loop: true,
-      slidesPerView: 3.0076,
-      spaceBetween: 7,
-      speed: 6000,
+      slidesPerView: 2.0097,
+      spaceBetween: 22,
+      speed: 5000,
       allowTouchMove: false,
       autoplay: {
         delay: 0,
       },
       breakpoints: {
         768: {
-          slidesPerView: 6.0935,
-          spaceBetween: 18,
+          speed: 6000,
+          slidesPerView: 4.1196,
+          spaceBetween: 39,
         }
       }
     });
@@ -331,6 +300,50 @@ jQuery(function ($) {
     }
 
     $(window).on('load scroll resize', checkVisibleAndInit);
+  }
+
+  // ------------------------------
+  // Serviceセクションのhover効果
+  // ------------------------------
+  function serviceHoverEffect() {
+    if (window.innerWidth <= 767) return; // SPでは動作しない
+
+    const $contentItems = $('.p-top-service__content-item');
+    const $imageItems = $('.p-top-service__images-item');
+
+    // 初期状態：1つ目の画像のみ表示
+    $imageItems.eq(0).css({
+      'opacity': '1',
+      'transform': 'scale(1)'
+    });
+    $imageItems.not(':eq(0)').css({
+      'opacity': '0'
+    });
+
+    $contentItems.on('mouseenter', function () {
+      const $this = $(this);
+      const index = $this.index();
+      
+      // activeクラスを付与
+      $this.addClass('active');
+      
+      // 対応する画像を表示
+      $imageItems.eq(index).css({
+        'opacity': '1',
+        'transform': 'scale(1)'
+      });
+      // 他の画像を非表示
+      $imageItems.not(':eq(' + index + ')').css({
+        'opacity': '0'
+      });
+    });
+
+    $contentItems.on('mouseleave', function () {
+      const $this = $(this);
+      
+      // activeクラスを削除（画像は維持）
+      $this.removeClass('active');
+    });
   }
 
   // ------------------------------
