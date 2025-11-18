@@ -1,4 +1,4 @@
-<header class="p-header">
+<header class="p-header js-fadeHead">
   <div class="p-header__inner">
     <h1 class="p-header__logo">
       <a href="/" class="p-header__logo--link">

@@ -6,7 +6,7 @@ jQuery(function ($) {
   // ------------------------------
   $('.js-fadeHead').each(function(){
     var targetElement = $(this).offset().top;
-    $(this).delay(500).queue(function(){
+    $(this).delay(300).queue(function(){
       $(this).css('opacity','1');
     });
   });
@@ -19,7 +19,7 @@ jQuery(function ($) {
       var targetElement = $(this).offset().top;
       var scroll = $(window).scrollTop();
       var windowHeight = $(window).height();
-      if (scroll > targetElement - windowHeight + 100){
+      if (scroll > targetElement - windowHeight + 80){
         $(this).css('opacity','1');
         $(this).css('transform','translateY(0)');
         $(this).find('.js-fadein-delay').each(function(){

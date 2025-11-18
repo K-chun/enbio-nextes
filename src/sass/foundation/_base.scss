@@ -52,7 +52,29 @@ button {
   }
 }
 
+.js-fadeHead {
+  opacity : 0;
+  transition: all 0.8s ease-in-out;
+}
 
+.js-fadein,
+.js-fadein-left,
+.js-fadein-right {
+  opacity: 0;
+  transition: all 0.8s ease !important;
+}
+
+.js-fadein {
+  transform: translateY(20px);
+}
+
+.js-fadein-left {
+  transform: translateX(-20px);
+}
+
+.js-fadein-right {
+  transform: translateX(20px);
+}
 
 .simplebar-track {
   width: myrem(8);
