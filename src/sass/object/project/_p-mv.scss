@@ -1,0 +1,115 @@
+@use "global" as *;
+
+.p-mv {
+  background: $darkgreen;
+  overflow: hidden;
+  @include mq(md){
+    height: myrem(830);
+  }
+}
+
+.p-mv__content {
+  @include mq(md){
+    width: 100%;
+    max-width: myrem(1250);
+    position: absolute;
+    top: 53.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    z-index: 5;
+  }
+}
+
+.p-mv__content-read {
+  display: inline;
+  font-size: myrem(36);
+  color: $white;
+  line-height: calc(46 / 36);
+  font-family: $font-figtree;
+  font-weight: 700;
+  background: linear-gradient($white, $white) 100% 100%/0 1px no-repeat;
+  background-size: 100% 2px;
+  background-position: 0 92%;
+  background-repeat: no-repeat;
+  @include mq(md){
+    font-size: myrem(72);
+    line-height: calc(91 / 72);
+  }
+}
+
+.p-mv__content-text {
+  font-size: myrem(16);
+  color: $white;
+  line-height: calc(23 / 16);
+  font-weight: 700;
+  @include mq(md){
+    margin-top: myrem(26);
+    font-size: myrem(28);
+    line-height: calc(36 / 28);
+  }
+}
+
+.p-mv__images {
+  @include mq(md){
+    width: myrem(834);
+    margin-left: auto;
+    display: flex;
+    gap: myrem(9);
+  }
+}
+
+.p-mv__swiper {
+  @include mq(md){
+    width: myrem(412);
+    height: myrem(830);
+  }
+}
+
+.p-mv__swiper--01 {
+  // SP: スライドを1列表示にする（slidesPerView: 2.2568を維持しつつ）
+  .swiper-slide {
+    width: 100% !important;
+  }
+  @include mq(md){
+    .swiper-slide {
+      width: auto; // PCでは自動
+    }
+  }
+}
+
+.p-mv__swiper--02 {
+
+}
+
+.p-mv__swiper-wrapper {
+  column-gap: myrem(8);
+  transition-timing-function: linear !important;
+  @include mq(md){
+    height: 100%;
+    row-gap: myrem(8);
+  }
+}
+
+.swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+.p-mv__swiper-slide {
+  @include mq(md){
+    width: myrem(412);
+    height: myrem(412) !important;
+  }
+}
+
+.p-mv__swiper-img {
+
+}
+
+.p-mv__swiper-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  aspect-ratio: 1 / 1;
+}
