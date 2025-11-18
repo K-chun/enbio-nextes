@@ -235,7 +235,7 @@ jQuery(function ($) {
 
     const mvSwiper01 = new Swiper(".p-mv__swiper--01", {
       loop: true,
-      slidesPerView: 2.2568, // サイズ感を維持
+      slidesPerView: 2.2568,
       spaceBetween: 0,
       allowTouchMove: false,
       speed: 12000,

@@ -1,6 +1,8 @@
 @use "global" as *;
 
 .p-mv {
+  padding-top: myrem(50);
+  padding-bottom: myrem(72);
   background: $darkgreen;
   overflow: hidden;
   @include mq(md){
@@ -9,15 +11,21 @@
 }
 
 .p-mv__content {
+  width: calc(358 / 390 * 100%);
+  margin-inline: auto;
+  margin-top: myrem(-24);
+  position: relative;
+  z-index: 5;
   @include mq(md){
     width: 100%;
     max-width: myrem(1250);
+    margin-inline: 0;
+    margin-top: 0;
     position: absolute;
     top: 53.5%;
     left: 50%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
-    z-index: 5;
   }
 }
 
@@ -39,6 +47,7 @@
 }
 
 .p-mv__content-text {
+  margin-top: myrem(18);
   font-size: myrem(16);
   color: $white;
   line-height: calc(23 / 16);
@@ -55,6 +64,7 @@
     width: myrem(834);
     margin-left: auto;
     display: flex;
+    flex-direction: row;
     gap: myrem(9);
   }
 }
@@ -67,19 +77,14 @@
 }
 
 .p-mv__swiper--01 {
-  // SP: スライドを1列表示にする（slidesPerView: 2.2568を維持しつつ）
-  .swiper-slide {
-    width: 100% !important;
-  }
-  @include mq(md){
-    .swiper-slide {
-      width: auto; // PCでは自動
-    }
-  }
+  
 }
 
 .p-mv__swiper--02 {
-
+  margin-top: myrem(4);
+  @include mq(md){
+    margin-top: 0;
+  }
 }
 
 .p-mv__swiper-wrapper {
