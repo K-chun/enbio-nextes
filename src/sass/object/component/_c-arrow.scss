@@ -8,6 +8,7 @@
   align-items: center;
   border-radius: 50%;
   position: relative;
+  overflow: hidden;
   @include mq(md){
     width: myrem(46);
     height: myrem(46);
@@ -45,8 +46,32 @@ a:hover .c-arrow--green {
   }
 }
 
-.c-arrow--light:hover .c-arrow::after,
-.c-arrow--green:hover .c-arrow::after {
+.c-arrow--light::before,
+.c-arrow--green::before {
+  @include mq(md){
+    content: "";
+    width: myrem(16);
+    height: myrem(12);
+    background: transparent url(../images/common/arrow_right_wht.svg) no-repeat center center / 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-300%, -50%);
+    -webkit-transform: translate(-300%, -50%);
+    transition: .3s ease;
+    opacity: 1;
+  }
+}
+
+a:hover .c-arrow::before {
+  @include mq(md){
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+  }
+}
+
+.c-arrow--light::after,
+.c-arrow--green::after {
   @include mq(md){
     content: "";
     width: myrem(16);
@@ -61,36 +86,17 @@ a:hover .c-arrow--green {
     opacity: 1;
   }
 }
-
-.c-arrow--light:hover .c-arrow::after,
-.c-arrow--green:hover .c-arrow::after {
+.c-arrow--light::after {
   @include mq(md){
-    animation: moveArrow .3s forwards;
+    background: transparent url(../images/common/arrow_right_green.svg) no-repeat center center / 100%;
   }
 }
-@keyframes moveArrow {
-  0% {
+
+a:hover .c-arrow::after {
+  @include mq(md){
+    transform: translate(200%, -50%);
+    -webkit-transform: translate(200%, -50%);
     opacity: 1;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-  }
-
-  50% {
-    opacity: 0;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(0%, -50%);
-  }
-
-  50.1% {
-    opacity: 0;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-100%, -50%);
-  }
-
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
   }
 }
 
@@ -101,12 +107,20 @@ a:hover .c-arrow--green {
   @include mq(md){
     width: myrem(16);
     height: myrem(12);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transition: .3s ease;
   }
 }
 
-.c-arrow--light:hover .c-arrow img,
-.c-arrow--green:hover .c-arrow img {
+a:hover .c-arrow--light img,
+a:hover .c-arrow--green img {
   @include mq(md){
     opacity: 0;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(200%, -50%);
   }
 }
