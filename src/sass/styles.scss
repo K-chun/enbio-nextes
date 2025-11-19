@@ -1,3 +1,15 @@
 @use "foundation/**";
 @use "layout/**";
-@use "object/**";
+@use "global/**";
+@use "object/component/**";
+@use "object/project/_p-header";
+@use "object/project/_p-footer";
+@use "object/project/_p-sub-mv";
+@use "object/project/_p-mv";
+@use "object/project/_p-top-concept";
+@use "object/project/_p-top-service";
+@use "object/project/_p-top-solution";
+@use "object/project/_p-top-company";
+@use "object/project/_p-top-news";
+@use "object/project/_p-top-message";
+@use "object/utility/**";

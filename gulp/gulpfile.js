@@ -1,6 +1,9 @@
 // gulpのメソッド呼び出し
 // src：参照元指定、dest：出力先指定、watch：ファイル監視、series：直列処理、parallel：並列処理
 const { src, dest, watch, series, parallel } = require("gulp");
+const fs = require('fs');
+const path = require('path');
+const rename = require('gulp-rename');
 
 // 入出力先指定
 const srcBase = '../src';
@@ -9,6 +12,19 @@ const srcPath = {
   css: srcBase + '/sass/**/*.scss',
   img: srcBase + '/images/**/*',
 }
+
+// ページ固有のSCSSファイルを動的に検出
+const getPageScssFiles = () => {
+  const sassDir = path.join(__dirname, srcBase, 'sass');
+  const files = fs.readdirSync(sassDir);
+  return files
+    .filter(file => file.endsWith('.scss') && file !== 'styles.scss')
+    .map(file => ({
+      name: path.basename(file, '.scss'),
+      src: srcBase + '/sass/' + file
+    }));
+}
+
 const distPath = {
   css: distBase + '/css/',
   img: distBase + '/images/',
@@ -46,8 +62,9 @@ const browsers = [ // 対応ブラウザの指定
   'and_chr >= 5',
   'Android >= 5',
 ]
-const cssSass = () => {
-  return src(srcPath.css)
+// メインCSS（共通部分：トップページ用）
+const cssSassMain = () => {
+  return src(srcBase + '/sass/styles.scss')
     .pipe(sourcemaps.init()) // ソースマップの初期化
     .pipe(
       plumber({ // エラーが出ても処理を止めない
@@ -55,7 +72,7 @@ const cssSass = () => {
       }))
     .pipe(sassGlob()) // globパターンを使用可にする
     .pipe(sass.sync({ // sassコンパイル
-      includePaths: ['src/sass'], // 相対パス省略
+      includePaths: [srcBase + '/sass'], // 相対パス省略
       outputStyle: 'expanded' // 出力形式をCSSの一般的な記法にする
     }))
     .pipe(postcss([cssnext({
@@ -66,9 +83,64 @@ const cssSass = () => {
     .pipe(sourcemaps.write('./')) // ソースマップの出力先をcssファイルから見たパスに指定
     .pipe(dest(distPath.css)) // 
     .pipe(notify({ // エラー発生時のアラート出力
-      message: 'Sassをコンパイルしました！',
+      message: '共通Sassをコンパイルしました！',
       onLast: true
     }))
+}
+
+// ページ固有のCSSを動的に生成する関数
+const createPageCssTask = (pageName, pageSrc) => {
+  return () => {
+    // dist/{ページ名}/ フォルダが存在するか確認
+    const pageDistBase = path.join(__dirname, distBase, pageName);
+    if (!fs.existsSync(pageDistBase)) {
+      console.log(`警告: ${pageDistBase} が存在しないため、${pageName}.scss のコンパイルをスキップします。`);
+      return Promise.resolve();
+    }
+    
+    const pageDistDir = distBase + '/' + pageName + '/css/';
+    
+    return src(pageSrc)
+      .pipe(sourcemaps.init()) // ソースマップの初期化
+      .pipe(
+        plumber({ // エラーが出ても処理を止めない
+            errorHandler: notify.onError('Error:<%= error.message %>')
+        }))
+      .pipe(sassGlob()) // globパターンを使用可にする
+      .pipe(sass.sync({ // sassコンパイル
+        includePaths: [srcBase + '/sass'], // 相対パス省略
+        outputStyle: 'expanded' // 出力形式をCSSの一般的な記法にする
+      }))
+      .pipe(postcss([cssnext({
+        features: {
+          rem: false // rem単位をpxに変換しない
+        }
+      },browsers)])) // 最新CSS使用を先取り
+      .pipe(rename(pageName + '.css')) // ファイル名を{ページ名}.cssに変更
+      .pipe(sourcemaps.write('./')) // ソースマップの出力先をcssファイルから見たパスに指定
+      .pipe(dest(pageDistDir)) // 
+      .pipe(notify({ // エラー発生時のアラート出力
+        message: `${pageName}用Sassをコンパイルしました！`,
+        onLast: true
+      }))
+  }
+}
+
+// すべてのページCSSタスクを動的に生成
+const getPageCssTasks = () => {
+  const pageFiles = getPageScssFiles();
+  const tasks = pageFiles.map(page => createPageCssTask(page.name, page.src));
+  return tasks;
+}
+
+// すべてのCSSをコンパイル
+const cssSass = (done) => {
+  const pageTasks = getPageCssTasks();
+  if (pageTasks.length > 0) {
+    return parallel(cssSassMain, ...pageTasks)(done);
+  } else {
+    return cssSassMain(done);
+  }
 }
 
 // 画像圧縮
@@ -105,15 +177,22 @@ const watchFiles = () => {
 
 // clean
 const del = require('del');
-const delPath = {
-	css: distBase + '/css/styles.css',
-	cssMap: distBase + '/css/styles.css.map',
-  img: distBase + '/images/',
-}
 const clean = (done) => {
-  del(delPath.css, { force: true });
-  del(delPath.cssMap, { force: true });
-  del(delPath.img, { force: true });
+  const delPaths = [
+    distBase + '/css/styles.css',
+    distBase + '/css/styles.css.map',
+    distBase + '/images/',
+  ];
+  
+  // ページ固有のCSSファイルを動的に削除
+  const pageFiles = getPageScssFiles();
+  pageFiles.forEach(page => {
+    const pageCss = distBase + '/' + page.name + '/css/' + page.name + '.css';
+    const pageCssMap = distBase + '/' + page.name + '/css/' + page.name + '.css.map';
+    delPaths.push(pageCss, pageCssMap);
+  });
+  
+  del(delPaths, { force: true });
   done();
 };
 
