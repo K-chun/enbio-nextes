@@ -7,7 +7,7 @@
 
 .p-top-message__readWrap {
   position: absolute;
-  top: 50%;
+  top: 52%;
   left: 0;
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
@@ -17,6 +17,9 @@
   width: 200vw;
   animation: message-slide 20s linear infinite;
   white-space: nowrap;
+  @include mq(md){
+    top: 50%;
+  }
 }
 
 // 無限スライドアニメーション

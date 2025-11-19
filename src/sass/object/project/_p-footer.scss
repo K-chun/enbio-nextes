@@ -2,7 +2,7 @@
 
 .p-footer {
   background: $darkgreen;
-  padding: myrem(48) 0 myrem(48);
+  padding: myrem(48) 0 myrem(56);
   @include mq(md){
     padding: myrem(66) 0 myrem(64);
   }
@@ -36,8 +36,12 @@
 }
 
 .p-footer__nav {
+  width: calc(318 / 330 * 100%);
+  margin-inline: auto;
   margin-top: myrem(46);
   @include mq(md){
+    width: auto;
+    margin-inline: 0;
     margin-top: myrem(46);
   }
 }
@@ -46,8 +50,8 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  column-gap: myrem(26);
-  row-gap: myrem(20);
+  column-gap: myrem(22);
+  row-gap: myrem(19);
   @include mq(md){
     column-gap: myrem(38);
   }
@@ -111,15 +115,18 @@
   height: 1px;
   background: rgba($white, 0.5);
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
+  @include mq(md){
+    top: 50%;
+  }
 }
 
 .p-footer__group-title {
   display: inline-flex;
-  padding-inline: myrem(32);
+  padding-inline: myrem(11);
   font-size: myrem(14);
   color: $white;
   line-height: calc(17 / 14);
@@ -176,10 +183,10 @@
 
 
 .p-footer__copyright {
-  margin-top: myrem(36);
+  margin-top: myrem(44);
   font-size: myrem(12);
   color: $white;
-  line-height: calc(32 / 12);
+  line-height: 1.5;
   font-family: $font-figtree;
   font-weight: 400;
   text-align: center;

@@ -19,7 +19,7 @@ jQuery(function ($) {
       var targetElement = $(this).offset().top;
       var scroll = $(window).scrollTop();
       var windowHeight = $(window).height();
-      if (scroll > targetElement - windowHeight + 80){
+      if (scroll > targetElement - windowHeight + 60){
         $(this).css('opacity','1');
         $(this).css('transform','translateY(0)');
         $(this).find('.js-fadein-delay').each(function(){
