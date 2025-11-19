@@ -44,7 +44,6 @@ jQuery(function ($) {
     scrollToHashOnLoad();   // ページ読み込み時のハッシュスクロール
     header();               // ハンバーガーメニュー挙動
     Accordion();            // アコーディオンメニュー
-    sliders();              // 各Swiperスライダー初期化
     manageNavInteraction(); // ナビのホバー＆クリック制御
     serviceHoverEffect();   // Serviceセクションのhover効果
   });
@@ -206,111 +205,6 @@ jQuery(function ($) {
       $(this).toggleClass('active');
     });
   }
-
-  // ------------------------------
-  // Swiperスライダー群
-  // ------------------------------
-  function sliders() {
-
-    // -------------------------------------
-    // 共通：スライド大量複製（loop を使わず無限風に）
-    // -------------------------------------
-    function cloneSlides($wrapper) {
-      const baseSlides = $wrapper.children('.swiper-slide');
-
-      // 何もなければ処理しない
-      if (baseSlides.length === 0) return;
-
-      // 元スライドを 8〜10倍複製して無限スクロールを再現
-      for (let i = 0; i < 3; i++) {
-        baseSlides.clone().appendTo($wrapper);
-      }
-    }
-
-    // -------------------------------------
-    // ▼ MV 01：767px以下で右方向、768px以上で上方向
-    // -------------------------------------
-    const $wrap01 = $(".p-mv__swiper--01 .swiper-wrapper");
-    if ($wrap01.length) cloneSlides($wrap01);
-
-    const mvSwiper01 = new Swiper(".p-mv__swiper--01", {
-      loop: true,
-      slidesPerView: 2.2568,
-      spaceBetween: 0,
-      allowTouchMove: false,
-      speed: 12000,
-      autoplay: {
-        delay: 0,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: false,
-        reverseDirection: false
-      },
-      direction: "horizontal", // SP: 左から右
-      breakpoints: {
-        768: {
-          direction: "vertical", // PC: 下から上
-          slidesPerView: 1,
-          speed: 16000
-        }
-      }
-    });
-
-    // -------------------------------------
-    // ▼ MV 02：767px以下で左方向、768px以上で下方向
-    // -------------------------------------
-    const $wrap02 = $(".p-mv__swiper--02 .swiper-wrapper");
-    if ($wrap02.length) cloneSlides($wrap02);
-
-    const mvSwiper02 = new Swiper(".p-mv__swiper--02", {
-      loop: true,
-      slidesPerView: 2.2568,
-      spaceBetween: 0,
-      allowTouchMove: false,
-      speed: 12000,
-      effect: 'slide',
-      watchSlidesProgress: true,
-      loopAdditionalSlides: 10,
-      loopedSlides: 10,
-      autoplay: {
-        delay: 0,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: false,
-        reverseDirection: true // 逆方向
-      },
-      direction: "horizontal", // SP: 右から左
-      breakpoints: {
-        768: {
-          direction: "vertical", // PC: 上から下
-          slidesPerView: 1,
-          speed: 16000,
-          spaceBetween: 8
-        }
-      }
-    });
-
-    // -------------------------------------
-    // ▼既存コンセプトスライダー
-    // -------------------------------------
-    new Swiper(".p-top-concept__swiper", {
-      loop: true,
-      slidesPerView: 2.0097,
-      spaceBetween: 22,
-      speed: 5000,
-      allowTouchMove: false,
-      autoplay: {
-        delay: 0,
-      },
-      breakpoints: {
-        768: {
-          speed: 6000,
-          slidesPerView: 4.1196,
-          spaceBetween: 39,
-        }
-      }
-    });
-
-  }
-
 
 
   // ------------------------------
