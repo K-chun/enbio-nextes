@@ -433,12 +433,57 @@
 						});
 
 					} else {
-						$("html, body").animate({
-							scrollTop: destination
-						}, 1100, function(){
-							if(options.focusFirstField) first_err.focus();
-						});
-						$("html, body").animate({scrollLeft: fixleft},1100)
+						// すべてのブラウザでスムーススクロールを実現
+						// モダンブラウザ（Chrome、Firefox、Safari、Edge）ではwindow.scrollToを使用
+						var scrollSuccess = false;
+						
+						if (window.scrollTo && typeof window.scrollTo === 'function') {
+							try {
+								// window.scrollTo({ behavior: 'smooth' })を試行
+								window.scrollTo({
+									top: destination,
+									left: fixleft,
+									behavior: 'smooth'
+								});
+								scrollSuccess = true;
+								setTimeout(function(){
+									if(options.focusFirstField) first_err.focus();
+								}, 500);
+							} catch(e) {
+								// window.scrollToが失敗した場合はanimateにフォールバック
+								scrollSuccess = false;
+							}
+						}
+						
+						if (!scrollSuccess) {
+							// 古いブラウザまたはwindow.scrollToが失敗した場合: jQuery animateを使用（スムーススクロール）
+							// htmlとbodyの競合を避けるため、適切な要素を選択
+							var $html = $('html');
+							var $body = $('body');
+							var scrollDuration = 500; // スムーススクロールの速度
+							
+							// スクロール可能な要素を判定
+							var htmlScrollTop = $html.scrollTop();
+							var bodyScrollTop = $body.scrollTop();
+							var $scrollTarget;
+							
+							if (htmlScrollTop > 0) {
+								$scrollTarget = $html;
+							} else if (bodyScrollTop > 0) {
+								$scrollTarget = $body;
+							} else {
+								// 両方とも0の場合は、ブラウザに応じて選択
+								// モダンブラウザでは通常htmlがスクロール要素
+								$scrollTarget = $html;
+							}
+							
+							$scrollTarget.stop(true, false).animate({
+								scrollTop: destination,
+								scrollLeft: fixleft
+							}, scrollDuration, 'swing', function(){
+								if(options.focusFirstField) first_err.focus();
+							});
+						}
 					}
 
 				} else if(options.focusFirstField)
