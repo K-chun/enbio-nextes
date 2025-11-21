@@ -1,0 +1,32 @@
+@use "global" as *;
+
+.p-section-main {
+  padding-top: myrem(50);
+  padding-bottom: myrem(68);
+  @include mq(md){
+    padding-top: myrem(112);
+    padding-bottom: myrem(30);
+  }
+}
+
+.p-section-main__inner {
+  @include mq(md){
+    max-width: myrem(1079);
+  }
+}
+
+.p-section-main__area {
+  padding-bottom: myrem(26);
+  @include mq(md){
+    padding-bottom: myrem(42);
+  }
+}
+
+.p-section-main__read {
+  font-size: myrem(16);
+  line-height: calc(32 / 16);
+  @include mq(md){
+    font-size: myrem(18);
+    line-height: calc(40 / 18);
+  }
+}

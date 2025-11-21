@@ -44,11 +44,11 @@
   }
 }
 
-.p-section-feature__item.columns:nth-child(even) {
-  @include mq(md){
-    flex-direction: row-reverse;
-  }
-}
+// .p-section-feature__item.columns:nth-child(even) {
+//   @include mq(md){
+//     flex-direction: row-reverse;
+//   }
+// }
 
 .p-section-feature__item-head {
   display: flex;
