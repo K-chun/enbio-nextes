@@ -73,3 +73,8 @@
     line-height: calc(28 / 18);
   }
 }
+
+.p-section-overview__desc a {
+  display: inline-block;
+  color: $darkgreen;
+}
