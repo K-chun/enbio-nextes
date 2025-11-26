@@ -50,13 +50,13 @@ jQuery(function ($) {
         768: {
           direction: "vertical", // PC: 下から上
           slidesPerView: 1,
-          speed: 16000,
+          speed: 20000,
         }
       }
     });
 
     // -------------------------------------
-    // ▼ MV 02：767px以下で左方向、768px以上で下方向
+    // ▼ MV 02：CSSで反転させて逆方向に見せる（reverseDirectionの問題を回避）
     // -------------------------------------
     const $wrap02 = $(".p-mv__swiper--02 .swiper-wrapper");
     if ($wrap02.length) cloneSlides($wrap02);
@@ -67,22 +67,18 @@ jQuery(function ($) {
       spaceBetween: 0,
       allowTouchMove: false,
       speed: 12000,
-      effect: 'slide',
-      watchSlidesProgress: true,
-      // loopAdditionalSlides: 10,
-      // loopedSlides: 10,
       autoplay: {
         delay: 0,
         disableOnInteraction: false,
         pauseOnMouseEnter: false,
-        reverseDirection: true // 逆方向
+        reverseDirection: false // CSSで反転するのでfalse
       },
-      direction: "horizontal", // SP: 右から左
+      direction: "horizontal", // SP
       breakpoints: {
         768: {
-          direction: "vertical", // PC: 上から下
+          direction: "vertical", // PC
           slidesPerView: 1,
-          speed: 16000,
+          speed: 20000,
         }
       }
     });
@@ -101,7 +97,7 @@ jQuery(function ($) {
       },
       breakpoints: {
         768: {
-          speed: 6000,
+          speed: 10000,
           slidesPerView: 4.1196,
           spaceBetween: 39,
         }

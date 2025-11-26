@@ -18,6 +18,7 @@
   white-space: nowrap;
   @include mq(md){
     top: 50%;
+    animation: message-slide 40s linear infinite;
   }
 }
 

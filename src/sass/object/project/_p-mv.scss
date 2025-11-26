@@ -84,8 +84,18 @@
 
 .p-mv__swiper--02 {
   margin-top: myrem(4);
+  transform: scaleX(-1); // SP: 横方向を反転して逆方向に見せる
   @include mq(md){
     margin-top: 0;
+    transform: scaleY(-1); // PC: 縦方向を反転して逆方向に見せる
+  }
+}
+
+// 反転した中の画像を元に戻す
+.p-mv__swiper--02 .p-mv__swiper-slide {
+  transform: scaleX(-1);
+  @include mq(md){
+    transform: scaleY(-1);
   }
 }
 
@@ -99,7 +109,7 @@
 }
 
 .swiper-wrapper {
-  transition-timing-function: linear !important;
+  // transition-timing-function: linear !important;
 }
 
 .p-mv__swiper-slide {

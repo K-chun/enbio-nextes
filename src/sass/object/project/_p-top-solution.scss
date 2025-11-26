@@ -171,12 +171,12 @@
   display: flex;
   gap: myrem(40);
   width: fit-content;
-  animation: solution-slide-sp 30s linear infinite;
+  animation: solution-slide-sp 50s linear infinite;
   white-space: nowrap;
   @include mq(md){
     top: 43.5%;
     gap: myrem(80);
-    animation: solution-slide-pc 40s linear infinite;
+    animation: solution-slide-pc 80s linear infinite;
   }
 }
 // 無限スライドアニメーション（SP用）
