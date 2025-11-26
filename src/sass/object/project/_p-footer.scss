@@ -166,7 +166,8 @@
 
 .p-footer__groupLink:hover {
   @include mq(md){
-    opacity: 0.7;
+    filter: brightness(120%);
+    opacity: 1;
   }
 }
 

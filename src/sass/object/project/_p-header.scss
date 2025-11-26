@@ -8,7 +8,7 @@
   top: myrem(17);
   left: 0;
   z-index: 1000;
-  @include mq(md){
+  @media (width >= 861px) {
     width: 100%;
     padding: 0;
     top: myrem(38);
@@ -28,7 +28,7 @@
   backdrop-filter: blur(16px) brightness(1.15);
   background: rgba(255, 255, 255, 0.8);
   transition: .3s ease;
-  @include mq(md){
+  @media (width >= 861px) {
     width: calc(1340 / 1440 * 100%);
     height: auto;
     padding: myrem(20) myrem(22.5);
@@ -42,7 +42,7 @@
   // border-radius: 4px;
   // background: $white;
   overflow-y: auto;
-  @include mq(md){
+  @media (width >= 861px) {
     height: auto;
     border-radius: 16px;
   }
@@ -53,7 +53,7 @@
   margin-top: myrem(16);
   position: relative;
   z-index: 50;
-  @include mq(md){
+  @media (width >= 861px) {
     width: myrem(261);
     margin-top: 0;
   }
@@ -64,7 +64,7 @@
 }
 
 .p-header__logo--link:hover {
-  @include mq(md){
+  @media (width >= 861px) {
     opacity: 0.7;
   }
 }
@@ -91,7 +91,7 @@
   top: myrem(17);
   right: myrem(16);
   z-index: 50;
-  @include mq(md){
+  @media (width >= 861px) {
     display: none;
   }
 }
@@ -134,7 +134,7 @@
   transition: 1.5s ease;
   opacity: 0;
   display: none;
-  @include mq(md){
+  @media (width >= 861px) {
     width: auto;
     margin-left: auto;
     padding-top: myrem(13);
@@ -155,7 +155,7 @@
   opacity: 1;
   margin-top: myrem(80);
   padding-bottom: myrem(29);
-  @include mq(md){
+  @media (width >= 861px) {
     margin-top: 0;
     padding-bottom: 0;
   }
@@ -169,7 +169,7 @@
   display: flex;
   flex-direction: column;
   row-gap: myrem(37);
-  @include mq(md){
+  @media (width >= 861px) {
     width: auto;
     // padding: 0;
     flex-direction: row;
@@ -192,7 +192,7 @@
   column-gap: myrem(23);
   position: relative;
   z-index: 3;
-  @include mq(md){
+  @media (width >= 861px) {
     display: block;
     font-size: myrem(18);
     cursor: pointer;
@@ -200,7 +200,7 @@
 }
 
 .p-header__navLink:hover {
-  @include mq(md){
+  @media (width >= 861px) {
     opacity: 1;
     color: $green;
   }
@@ -212,13 +212,13 @@
   height: myrem(24);
   background: transparent url(../images/common/arrow_nav.svg) no-repeat center center / 100%;
   display: block;
-  @include mq(md){
+  @media (width >= 861px) {
     display: none;
   }
 }
 
 .p-header__navLink::after {
-  @include mq(md){
+  @media (width >= 861px) {
     content: '';
     width: 100%;
     height: 2px;
@@ -232,7 +232,7 @@
   }
 }
 .p-header__navLink:hover::after {
-  @include mq(md){
+  @media (width >= 861px) {
     transform: scale(1, 1);
     transform-origin: left top;
     opacity: 1;
@@ -240,6 +240,7 @@
 }
 
 .p-header__nav-contact {
+  display: block;
   // width: myrem(270);
   width: calc(270 / 328 * 100%);
   margin-inline: auto;
@@ -252,7 +253,7 @@
   align-items: center;
   justify-content: center;
   column-gap: myrem(14);
-  @include mq(md){
+  @media (width >= 861px) {
     display: none;
   }
 }
@@ -293,7 +294,7 @@
   top: myrem(17);
   right: myrem(64);
   overflow: hidden;
-  @include mq(md){
+  @media (width >= 861px) {
     width: myrem(174);
     width: auto;
     height: auto;
@@ -308,7 +309,7 @@
 }
 
 .p-header__btn::before{
-  @include mq(md){
+  @media (width >= 861px) {
     content: '';
     width: 0;
     height: 100%;
@@ -323,23 +324,17 @@
 }
 
 .p-header__btn:hover::before{
-  @include mq(md){
+  @media (width >= 861px) {
     width: 100%;
   }
 }
-
-// .p-header__btn:hover {
-//   @include mq(md){
-//     background: $darkgreen;
-//   }
-// }
 
 .p-header__btn-icon {
   display: block;
   width: myrem(15);
   position: relative;
   z-index: 1;
-  @include mq(md){
+  @media (width >= 861px) {
     // width: myrem(16);
     width: myrem(20);
     margin-right: myrem(15);
@@ -354,7 +349,9 @@
 }
 
 .p-header__btn-text {
-  @include mq(md){
+  display: none;
+  @media (width >= 861px) {
+    display: block;
     width: 100%;
     padding: 0;
     font-size: myrem(18);

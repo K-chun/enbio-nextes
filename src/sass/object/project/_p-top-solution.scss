@@ -3,6 +3,8 @@
 .p-top-solution {
   padding-top: myrem(42);
   padding-bottom: myrem(56);
+  position: relative;
+  overflow: hidden;
   @include mq(md){
     padding-top: myrem(170);
     padding-bottom: myrem(168);
@@ -172,7 +174,7 @@
   animation: solution-slide-sp 30s linear infinite;
   white-space: nowrap;
   @include mq(md){
-    top: 41%;
+    top: 43.5%;
     gap: myrem(80);
     animation: solution-slide-pc 40s linear infinite;
   }

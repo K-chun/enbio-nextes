@@ -50,7 +50,7 @@ jQuery(function ($) {
         768: {
           direction: "vertical", // PC: 下から上
           slidesPerView: 1,
-          speed: 16000
+          speed: 16000,
         }
       }
     });
@@ -69,8 +69,8 @@ jQuery(function ($) {
       speed: 12000,
       effect: 'slide',
       watchSlidesProgress: true,
-      loopAdditionalSlides: 10,
-      loopedSlides: 10,
+      // loopAdditionalSlides: 10,
+      // loopedSlides: 10,
       autoplay: {
         delay: 0,
         disableOnInteraction: false,
@@ -83,7 +83,6 @@ jQuery(function ($) {
           direction: "vertical", // PC: 上から下
           slidesPerView: 1,
           speed: 16000,
-          spaceBetween: 8
         }
       }
     });

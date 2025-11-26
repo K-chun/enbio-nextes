@@ -19,7 +19,7 @@
         <li class="p-header__navItem"><a href="/recruit/" class="p-header__navLink">採用情報</a></li>
       </ul>
   
-      <a href="/contact/" class="p-header__nav-contact u-sp">
+      <a href="/contact/" class="p-header__nav-contact">
         <span class="p-header__nav-contact_icon"><img src="/images/common/icon_mail.svg" width="16" height="13" alt=" loading="lazy" decoding="async"></span>
         <span class="p-header__nav-contact_text">問い合わせ</span>
       </a>
@@ -27,7 +27,7 @@
   
     <a href="/contact/" class="p-header__btn">
       <span class="p-header__btn-icon"><img src="/images/common/icon_mail.svg" width="16" height="13" alt=" loading="lazy" decoding="async"></span>
-      <span class="p-header__btn-text u-pc">問い合わせ</span>
+      <span class="p-header__btn-text">問い合わせ</span>
     </a>
   
     <button class="p-header__hamburger js-hamburger" aria-label="ハンバーガーメニュー開閉ボタン" aria-controls="gnav" aria-expanded="false">
