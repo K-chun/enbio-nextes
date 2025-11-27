@@ -38,6 +38,26 @@
   }
 }
 
+.advantages .p-sub-mv__bg {
+  background-image: url(../images/advantages/mv_pc.jpg);
+}
+
+.battery .p-sub-mv__bg {
+  background-image: url(../images/battery/mv_pc.jpg);
+}
+
+.solar .p-sub-mv__bg {
+  background-image: url(../images/solar/mv_pc.jpg);
+}
+
+.om .p-sub-mv__bg {
+  background-image: url(../images/om/mv_pc.jpg);
+}
+
+.recruit .p-sub-mv__bg {
+  background-image: url(../images/recruit/mv_pc.jpg);
+}
+
 .p-sub-mv__inner {
   padding: 0 myrem(31);
   @include mq(md){
@@ -56,9 +76,9 @@
 }
 
 .p-sub-mv__title-sub {
-  font-size: myrem(48);
+  font-size: myrem(38);
   color: $white;
-  line-height: calc(56 / 48);
+  line-height: calc(42 / 38);
   font-weight: 400;
   font-family: $font-figtree;
   @include mq(md){
