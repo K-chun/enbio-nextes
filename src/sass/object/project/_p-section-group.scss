@@ -33,6 +33,13 @@
   }
 }
 
+.p-section-group__img.advantages {
+  @include mq(md){
+    max-width: myrem(850);
+    margin-inline: auto;
+  }
+}
+
 .p-section-group__img img {
   width: 100%;
   height: auto;

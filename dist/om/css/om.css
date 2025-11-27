@@ -277,6 +277,13 @@
   }
 }
 
+@media screen and (min-width: 768px) {
+  .p-section-group__img.advantages {
+    max-width: 53.125rem;
+    margin-inline: auto;
+  }
+}
+
 .p-section-group__img img {
   width: 100%;
   height: auto;

@@ -1,0 +1,13 @@
+@use "global" as *;
+
+.c-link {
+  display: inline-block;
+  color: $darkgreen;
+  transition: .3s ease;
+}
+
+.c-link:hover {
+  @include mq(md){
+    opacity: 0.7;
+  }
+}
