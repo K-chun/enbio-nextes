@@ -83,6 +83,9 @@
 
 .p-section-feature__item-img {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: myrem(20);
 }
 
 .p-section-feature__item.columns .p-section-feature__item-img {

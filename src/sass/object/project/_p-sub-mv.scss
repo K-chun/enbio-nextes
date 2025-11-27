@@ -1,17 +1,23 @@
 @use "global" as *;
 
 .p-sub-mv {
-
+  height: myrem(266);
+  @include mq(md){
+    height: auto;
+  }
 }
 
 .p-sub-mv__bg {
-  padding-top: myrem(125);
-  padding-bottom: myrem(70);
+  height: 100%;
+  // padding-top: myrem(125);
+  // padding-bottom: myrem(70);
   background-color: transparent;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
   @include mq(md){
+    height: auto;
     padding-top: myrem(231);
     padding-bottom: myrem(184);
   }
@@ -60,9 +66,17 @@
 
 .p-sub-mv__inner {
   padding: 0 myrem(31);
+  position: absolute;
+  top: 60%;
+  left: 0;
+  transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
   @include mq(md){
     max-width: myrem(1326);
     padding: 0 myrem(25);
+    position: static;
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
   }
 }
 
