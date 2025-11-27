@@ -414,6 +414,21 @@
   }
 }
 
+.p-section-case__subtitle {
+  margin-top: 2.0625rem;
+  font-size: 1.125rem;
+  color: #005563;
+  line-height: 1.4444444444;
+  font-weight: 600;
+}
+@media screen and (min-width: 768px) {
+  .p-section-case__subtitle {
+    margin-top: 3rem;
+    font-size: 1.25rem;
+    line-height: 1.45;
+  }
+}
+
 .p-section-case__read {
   margin-top: 2.0625rem;
 }

@@ -19,6 +19,19 @@
 
 }
 
+.p-section-case__subtitle {
+  margin-top: myrem(33);
+  font-size: myrem(18);
+  color: $darkgreen;
+  line-height: calc(26 / 18);
+  font-weight: 600;
+  @include mq(md){
+    margin-top: myrem(48);
+    font-size: myrem(20);
+    line-height: calc(29 / 20);
+  }
+}
+
 .p-section-case__read {
   margin-top: myrem(33);
   @include mq(md){
