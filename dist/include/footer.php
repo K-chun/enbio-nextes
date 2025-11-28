@@ -50,6 +50,6 @@
         </li>
       </ul>
     </div>
-    <p class="p-footer__copyright">Copyright &copy; enbio engineering All Rights Reserved.</p>
+    <p class="p-footer__copyright">Copyright &copy; EnBio NExTeS All Rights Reserved.</p>
   </div>
 </footer>
